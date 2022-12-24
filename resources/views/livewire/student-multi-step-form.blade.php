@@ -1,4 +1,9 @@
 <div class="">
+    @if(session()->has('message'))
+    <div class="text-md font-nav-text text-white mx-auto bg-red-600 rounded-2xl py-3 px-3 md:max-w-2xl text-center mt-5 mb-5">
+    {{ session()->get('message') }}
+    </div>
+    @endif
     
     <form wire:submit.prevent="register">
         @csrf
@@ -12,14 +17,14 @@
      
         <div class="step-one">
          
-            <div class="relative flex flex-col mb-10 w-80 m-auto shadow-lg sm:w-auto sm:ml-28 sm:mr-28 bg-gray-50 rounded-lg p-10">
+            <div class="relative flex flex-col mb-10 w-80 sm:w-6/12 m-auto shadow-lg bg-gray-100 bg-opacity-80 rounded-lg p-10">
                 <div class="mx-auto container flex justify-between">
                     <div class="text-sm sm:text-2xl text-center border-gray-300 text-green-900 font-logo-text">STEP: 1 of 4</div>
                     <div class="hidden md:flex text-xs font-thin py-1 sm:text-lg text-center sm:py-3 border-gray-300 text-green-900 font-nav-text">Fill out the necessary information</div>
-                    <div class="text-xs font-thin py-1 sm:text-lg text-center sm:py-3 border-gray-300 text-green-900 font-logo-text">Personal Information</div>
+                    <div class="text-xs font-thin py-1 sm:text-lg text-center sm:py-3 border-gray-300 text-green-900 font-logo-text">Student Information</div>
                 </div>
                 <hr class="border-green-600 m-4">
-                <div class="m-auto flex-col sm:p-6">
+                <div class="m-auto flex-col sm:p-6 mb-5">
                     <div class="flex flex-col">
                         <div class="w-full pr-4 pl-4">
                             <div class="mb-4">
@@ -53,9 +58,8 @@
                                 <select class=" text-gray-800 font-nav-text text-md w-full py-3 px-5 mb-1
                                 bg-white rounded-lg border-white shadow-lg text-sm md:text-base" wire:model="gender">
                                        <option value="" selected >Select gender</option>
-                                       <option value="male">Male</option>
-                                       <option value="female">Female</option>
-                                       <option value="no_response">Prefer not to respond</option>
+                                       <option value="Male">Male</option>
+                                       <option value="Female">Female</option>
                                 </select>
                                 <span class="text-red-600 text-sm">@error('gender'){{ $message }}@enderror</span>
                             </div>
@@ -73,16 +77,16 @@
                     </div>
 
                     <div class="flex-col w-full pl-4">
-                        <input type="checkbox" name="terms" id="terms"  wire:model="terms" class="@error('terms') border-red-500 @enderror w-4 h-4 mr-1 text-green-600 focus:outline-lime-900 bg-white border-gray-200 rounded-full" />
+                        <input type="checkbox" name="terms" id="terms"  wire:model="terms" class="@error('terms') border-red-500 @enderror w-4 h-4 mr-1 text-blue-600 focus:outline-lime-900 bg-white border-gray-500 rounded-full" />
                     
                         <label for="terms" class=" text-sm sm:text-base font-paragraph-text text-gray-700">I agree to</label>
 
-                        <button class=" text-yellow-600 text-sm sm:text-base  hover:underline 
+                        <button class=" text-teal-800 text-sm sm:text-base  hover:underline 
                         font-paragraph-text text-center" type="button" data-modal-toggle="defaultModal">Terms of Service</button>
 
                         <label for="terms" class="text-sm sm:text-base  font-paragraph-text text-gray-700">and</label> 
 
-                        <button class=" text-yellow-600 hover:underline text-sm sm:text-base 
+                        <button class=" text-teal-800 hover:underline text-sm sm:text-base 
                         font-paragraph-text text-center" type="button" data-modal-toggle="medium-modal">Privacy Policy</button>
 
                         
@@ -97,7 +101,7 @@
                                 <div class="relative bg-white rounded-lg shadow">
                                     <!-- Modal header -->
                                     <div class="flex justify-between items-start p-4 rounded-t border-b">
-                                        <h3 class="text-2xl font-logo-text text-green-900 ">
+                                        <h3 class="text-2xl font-logo-text text-success-900 ">
                                             Terms of Service
                                         </h3>
                                         <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-toggle="defaultModal">
@@ -107,12 +111,19 @@
                                     </div>
                                     <!-- Modal body -->
                                     <div class="p-6 space-y-6">
-                                        <p class="font-paragraph-text text-base leading-relaxed text-gray-800">
-                                            With less than a month to go before the European Union enacts new consumer privacy laws for its citizens, companies around the world are updating their terms of service agreements to comply.
-                                        </p>
-                                        <p class="font-paragraph-text text-base leading-relaxed text-gray-800">
-                                            The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is meant to ensure a common set of data rights in the European Union. It requires organizations to notify users as soon as possible of high-risk data breaches that could personally affect them.
-                                        </p>
+                                        <p class="font-paragraph-text text-sm sm:text-base leading-relaxed text-gray-800">
+                                            When you create an account with us, you must provide us information that is accurate, complete, and
+                                            current at all times. Failure to do so constitutes a breach of the Terms, which may result in immediate
+                                            termination of your account on our service. <br>
+                                            You are responsible for safeguarding the password that You use to access the service and for any activities
+                                            or actions under your password, whether your password is with our service or a third-party Social Media
+                                            Service. <br>
+                                            You agree not to disclose your password to any third party. You must notify us immediately upon becoming
+                                            aware of any breach of security or unauthorized use of Your account. <br>
+                                            You may not use as a username the name of another person or entity or that is not lawfully available for
+                                            use, a name or trademark that is subject to any rights of another person or entity other than you without
+                                            appropriate authorization, or a name that is otherwise offensive, vulgar or obscene.
+                                        </p>          
                                     </div>
 
                                 </div>
@@ -125,7 +136,7 @@
                             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                                 <!-- Modal header -->
                                 <div class="flex justify-between items-center p-5 rounded-t border-b">
-                                    <h3 class="text-2xl font-logo-text text-green-900">
+                                    <h3 class="text-2xl font-logo-text text-success-900">
                                         Privacy Policy
                                     </h3>
                                     <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="medium-modal">
@@ -136,10 +147,9 @@
                                 <!-- Modal body -->
                                 <div class="p-6 space-y-6">
                                     <p class="font-paragraph-text text-base leading-relaxed text-gray-800">
-                                        With less than a month to go before the European Union enacts new consumer privacy laws for its citizens, companies around the world are updating their terms of service agreements to comply.
-                                    </p>
-                                    <p class="font-paragraph-text text-base leading-relaxed text-gray-800">
-                                        The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is meant to ensure a common set of data rights in the European Union. It requires organizations to notify users as soon as possible of high-risk data breaches that could personally affect them.
+                                        All employees and personnel of the school shall maintain the confidentiality and secrecy of all personal data that come to their 
+                                        knowledge and possession, even after resignation, termination of contract, or other contractual relations. Personal data under 
+                                        the custody of the school shall be disclosed only pursuant to a lawful purpose, and to authorized recipients of such data.
                                     </p>
                                 </div>
                             </div>
@@ -147,6 +157,8 @@
                     </div>
         
                 </div>
+        
+
 
 
                 <div class="flex justify-between w-auto mx-6 sm:w-96 sm:m-auto">
@@ -176,7 +188,7 @@
             
        
         <div class="step-two">
-            <div class="relative flex flex-col mb-10 w-80 m-auto shadow-lg sm:w-auto sm:ml-28 sm:mr-28 bg-gray-50 rounded-lg p-10">
+            <div class="relative flex flex-col mb-10 w-80 sm:w-6/12 m-auto shadow-lg bg-gray-100 bg-opacity-80 rounded-lg p-10">
                 <div class="mx-auto container flex justify-between">
                     <div class="text-sm sm:text-2xl text-center border-gray-300 text-green-900 font-logo-text">STEP: 2 of 4</div>
                     <div class="text-xs font-thin  py-1 sm:text-lg text-center sm:py-3 border-gray-300 text-green-900 font-logo-text">Contact Details</div>
@@ -184,7 +196,7 @@
                     <div class="hidden text-center border-gray-300 text-green-900 font-logo-text">  </div>
                 </div>
                 <hr class="border-green-600 m-4">
-                <div class="m-auto flex-col sm:p-6">
+                <div class="m-auto flex-col sm:p-6 mb-5">
                     <div class="flex flex-col">
                         <div class="w-full pr-4 pl-4">
                             <div class="mb-4">
@@ -196,9 +208,9 @@
                         </div>
                         <div class="w-full pr-4 pl-4">
                            <div class="mb-4">
-                               <label for="contact" class="font-title-text text-green-900">Contact</label>
+                               <label for="contact" class="font-title-text text-green-900">Phone Number</label>
                                <input type="text" class="font-nav-text w-full py-3 px-5 mb-1
-                               bg-white rounded-lg border-white shadow-lg text-sm md:text-base  placeholder:text-xs md:placeholder:text-base" placeholder="Enter phone number" wire:model="contact">
+                               bg-white rounded-lg border-white shadow-lg text-sm md:text-base  placeholder:text-xs md:placeholder:text-base" placeholder="09XXXXXXXXX" wire:model="contact">
                                <span class="text-red-600 text-sm">@error('contact'){{ $message }}@enderror</span>
                            </div>
                        </div>
@@ -246,7 +258,7 @@
             
     
         <div class="step-three">
-            <div class="relative flex flex-col mb-10 w-80 m-auto shadow-lg sm:w-auto sm:ml-28 sm:mr-28 bg-gray-50 rounded-lg p-10">
+            <div class="relative flex flex-col mb-10 w-80 sm:w-6/12 m-auto shadow-lg bg-gray-100 bg-opacity-80 rounded-lg p-10">
                 <div class="mx-auto container flex justify-between">
                     <div class="text-sm sm:text-2xl text-center border-gray-300 text-green-900 font-logo-text">STEP: 3 of 4</div>
                     <div class="text-xs font-thin  py-1 sm:text-lg text-center sm:py-3 border-gray-300 text-green-900 font-logo-text">Student Details</div>
@@ -254,12 +266,61 @@
                     <div class="hidden text-center border-gray-300 text-green-900 font-logo-text">  </div>
                 </div>
                 <hr class="border-green-600 m-4">
-                    <div class="m-auto flex-col sm:p-6">
+                    <div class="m-auto flex-col sm:p-6 mb-5">
+                        
+                        <div class="flex">
+                            <div class="w-full pr-4 pl-4">
+                                <div class="mb-4" >
+                                    <label for="grade" class="font-title-text text-green-900">Grade Level</label>
+                                    <select class=" text-gray-800 font-nav-text w-full py-3 px-5 mb-1
+                                    bg-white rounded-lg border-white shadow-lg text-sm md:text-base  placeholder:text-xs md:placeholder:text-base" wire:model="grade">
+                                           <option value="" selected>Student's current grade</option>
+                                           <option value="Kinder">Kinder</option>
+                                           <option value="Grade 1">Grade 1</option>
+                                           <option value="Grade 2">Grade 2</option>
+                                           <option value="Grade 3">Grade 3</option>
+                                           <option value="Grade 4">Grade 4</option>
+                                           <option value="Grade 5">Grade 5</option>
+                                           <option value="Grade 6">Grade 6</option>
+                                           <option value="Alumni">Alumni</option>
+                                    </select>
+                                    <span class="text-red-600 text-sm">@error('grade'){{ $message }}@enderror</span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        @if ($grade == "Alumni")
+                        <div class="w-full pr-4 pl-4">
+                            <div class="mb-4">
+                                <label for="section" class="font-title-text text-base text-green-900">Year Graduated</label>
+                                <input type="text" class="font-nav-text w-full py-3 px-5 mb-1
+                                bg-white rounded-lg border-white shadow-lg text-sm md:text-base  placeholder:text-xs md:placeholder:text-base" placeholder="Enter year graduated" wire:model="section">
+                                <span class="text-red-600 text-sm">@error('section'){{ $message }}@enderror</span>
+                            </div>
+                        </div>
+                        @else
+                        <div class="w-full pr-4 pl-4">
+                            <div class="mb-4">
+                                <label for="section" class="font-title-text text-base text-green-900">Section Name</label>
+                                <input type="text" class="font-nav-text w-full py-3 px-5 mb-1
+                                bg-white rounded-lg border-white shadow-lg text-sm md:text-base  placeholder:text-xs md:placeholder:text-base" placeholder="Enter student's Section" wire:model="section">
+                                <span class="text-red-600 text-sm">@error('section'){{ $message }}@enderror</span>
+                            </div>
+                        </div>
+                        @endif
+
+                       
+
+                      
+
+                            
+
                             <div class="w-full pr-4 pl-4">
                                 <div class="mb-4">
                                     <label for="lrn" class="font-title-text text-base text-green-900">Learner Reference Number (LRN)</label>
                                     <input type="text" class="font-nav-text w-full py-3 px-5 mb-1
-                                    bg-white rounded-lg border-white shadow-lg text-sm md:text-base  placeholder:text-xs md:placeholder:text-base" placeholder="Enter your LRN" wire:model="lrn">
+                                    bg-white rounded-lg border-white shadow-lg text-sm md:text-base  placeholder:text-xs md:placeholder:text-base" placeholder="Enter student's LRN" wire:model="lrn">
                                     <span class="text-red-600 text-sm">@error('lrn'){{ $message }}@enderror</span>
                                 </div>
                             </div>
@@ -273,7 +334,9 @@
                                         bg-white rounded-lg border-white shadow-lg text-sm md:text-base  placeholder:text-xs md:placeholder:text-base" wire:model="document">
                                                <option value="" selected>Select document</option>
                                                <option value="Form-137">Form-137</option>
-                                               <option value="Certificate of Enrolment">Certificate of Enrolment</option>
+                                               <option value="Certificate of Enrollment">Certificate of Enrollment</option>
+                                               <option value="Certificate of Graduation">Certificate of Graduation</option>
+                                               <option value="Certificate of Good Moral">Certificate of Good Moral</option>
                                         </select>
                                         <span class="text-red-600 text-sm">@error('document'){{ $message }}@enderror</span>
                                     </div>
@@ -314,8 +377,8 @@
             
     
         <div class="step-four">
-            <div class="relative flex flex-col mb-10 w-80 m-auto shadow-lg sm:w-auto sm:ml-28 sm:mr-28 bg-gray-50 rounded-lg p-10">
-                    <div class="mx-auto container flex justify-between">
+            <div class="relative flex flex-col mb-10 w-80 sm:w-6/12 m-auto shadow-lg bg-gray-100 bg-opacity-80 rounded-lg p-10">
+                <div class="mx-auto container flex justify-between">
                         <div class="text-sm sm:text-2xl text-center border-gray-300 text-green-900 font-logo-text">STEP: 4 of 4</div>
                         <div class="hidden md:flex text-xs font-thin py-1 sm:text-lg text-center sm:py-3 border-gray-300 text-green-900 font-nav-text">Please review the information that you input</div>
                         <div class="text-xs font-thin  py-1 sm:text-lg text-center sm:py-3 border-gray-300 text-green-900 font-logo-text">Review Request Details</div>
@@ -340,6 +403,24 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="m-auto flex flex-col lg:flex-row sm:p-6">
+                            <div class="w-full pr-4 pl-4">
+                                <div class="mb-4 lg:mb-0">
+                                    <label for="first_name" class="font-title-text">Grade Level</label>
+                                    <input type="text" class="text-green-900 font-nav-text w-full py-3 px-5 mb-1
+                                    bg-white rounded-lg border-white text-sm md:text-base placeholder:text-xs md:placeholder:text-base" value="{{ $grade }}" wire:model="grade" disabled>
+                                </div>
+                            </div>
+        
+                            <div class="w-full pr-4 pl-4">
+                                <div class="mb-4 lg:mb-0">
+                                    <label for="first_name" class="font-title-text">Section</label>
+                                    <input type="text" class="text-green-900 font-nav-text w-full py-3 px-5 mb-1
+                                    bg-white rounded-lg border-white  text-sm md:text-base placeholder:text-xs md:placeholder:text-base" value="{{ $section }}" wire:model="section" disabled>
+                                </div>
+                            </div>
+                        </div>
     
                         <div class="m-auto flex flex-col lg:flex-row sm:p-6">
                             <div class="w-full pr-4 pl-4">
@@ -359,7 +440,7 @@
                             </div>
                         </div>
     
-                        <div class="mx-auto flex flex-col lg:flex-row sm:p-6 ">
+                        <div class="mx-auto flex flex-col lg:flex-row sm:p-6 mb-5">
                             <div class="w-full pr-4 pl-4 ">
                                 <div class="mb-4 lg:mb-0">
                                     <label for="first_name" class="font-title-text">Contact Number</label>
@@ -378,33 +459,65 @@
                         </div>
                    
 
-                
+                        <div class="flex justify-between w-auto mx-6 sm:w-96 sm:m-auto">
 
-                    
+                            @if($currentStep == 1)
+                             <div></div>
+                            @endif
+                  
+                             @if ($currentStep == 2 || $currentStep == 3 || $currentStep == 4)
+                                 <button type="button" class="px-4 text-sm font-nav-text rounded-full py-2 sm:px-8 sm:text-lg bg-green-900 text-white hover:bg-green-500" wire:click="decreaseStep()">Back</button>
+                             @endif
+                             
+                             @if ($currentStep == 4)
+                                  <button type="button" class="px-4 text-sm font-nav-text rounded-full py-2 sm:px-8  sm:text-lg  bg-success-800 text-white hover:bg-success-400" wire:click="increaseStep()">Submit</button>
+                             @endif
+                                 
+                                
+                          </div>
+                </div>
+            </div>
+        </div>
+
+        @endif
+
+
+        @if ($currentStep == 5)
+            
+    
+        <div class="step-five">
+            <div class="relative flex flex-col mb-10 w-80 sm:w-6/12 m-auto shadow-lg bg-gray-100 bg-opacity-80 rounded-lg p-10">
+                        <div class="m-auto flex flex-col lg:flex-col mb-1 sm:mb-10">
+                            <div class="w-full pr-4 pl-4">
+                                <div class="mb-4 lg:mb-0">
+                                    <img class="h-52 w-52 mx-auto" src="{{ asset('images/caution.png') }}" alt="">
+                                </div>
+                            </div>
         
+                            <div class="w-full pr-4 pl-4">
+                                <div class="mb-4 lg:mb-0">
+                                    <p class="font-title-text text-center mx-auto">Are you sure you've reviewed your details and want to submit your request?</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-between w-auto sm:w-auto sm:m-auto mt-5">
+
+                            @if($currentStep == 1)
+                             <div></div>
+                            @endif
+                  
+                             @if ($currentStep == 2 || $currentStep == 3 || $currentStep == 4 || $currentStep == 5)
+                                 <button type="button" class="px-4 sm:mr-5 text-sm font-nav-text rounded-full py-2 sm:px-8 sm:text-lg bg-green-900 text-white hover:bg-green-500" wire:click="decreaseStep()">Back</button>
+                             @endif
+                            
+                             @if ($currentStep == 5)
+                                  <button type="submit" class="px-4 sm:ml-5 text-sm font-nav-text rounded-full py-2 sm:px-8  sm:text-lg bg-success-700 text-white hover:bg-success-400">Yes</button>
+                             @endif 
+                                
+                          </div>
                 </div>
 
-
-                <div class="flex justify-between w-auto mx-6 sm:w-96 sm:m-auto">
-
-                    @if($currentStep == 1)
-                     <div></div>
-                    @endif
-          
-                     @if ($currentStep == 2 || $currentStep == 3 || $currentStep == 4)
-                         <button type="button" class="px-4 text-sm font-nav-text rounded-full py-2 sm:px-8 sm:text-lg bg-green-900 text-white hover:bg-green-500" wire:click="decreaseStep()">Back</button>
-                     @endif
-                     
-                     @if ($currentStep == 1 || $currentStep == 2 || $currentStep == 3)
-                         <button type="button" class="px-4 text-sm font-nav-text rounded-full py-2 sm:px-8  sm:text-lg  bg-green-900 text-white hover:bg-green-500" wire:click="increaseStep()">Next</button>
-                     @endif
-                     
-                     @if ($currentStep == 4)
-                          <button type="submit" class="px-4 text-sm font-nav-text rounded-full py-2 sm:px-8  sm:text-lg  bg-lime-600 text-white hover:bg-lime-400">Submit</button>
-                     @endif
-                         
-                        
-                  </div>
 
 
             </div>

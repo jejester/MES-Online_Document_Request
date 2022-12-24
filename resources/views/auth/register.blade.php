@@ -119,13 +119,20 @@
                                           </div>
                                           <!-- Modal body -->
                                           <div class="p-6 space-y-6">
-                                              <p class="font-paragraph-text text-base leading-relaxed text-gray-800">
-                                                  With less than a month to go before the European Union enacts new consumer privacy laws for its citizens, companies around the world are updating their terms of service agreements to comply.
-                                              </p>
-                                              <p class="font-paragraph-text text-base leading-relaxed text-gray-800">
-                                                  The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is meant to ensure a common set of data rights in the European Union. It requires organizations to notify users as soon as possible of high-risk data breaches that could personally affect them.
-                                              </p>
-                                          </div>
+                                            <p class="font-paragraph-text text-sm sm:text-base leading-relaxed text-gray-800">
+                                                When you create an account with us, you must provide us information that is accurate, complete, and
+                                                current at all times. Failure to do so constitutes a breach of the Terms, which may result in immediate
+                                                termination of your account on our service. <br>
+                                                You are responsible for safeguarding the password that You use to access the service and for any activities
+                                                or actions under your password, whether your password is with our service or a third-party Social Media
+                                                Service. <br>
+                                                You agree not to disclose your password to any third party. You must notify us immediately upon becoming
+                                                aware of any breach of security or unauthorized use of Your account. <br>
+                                                You may not use as a username the name of another person or entity or that is not lawfully available for
+                                                use, a name or trademark that is subject to any rights of another person or entity other than you without
+                                                appropriate authorization, or a name that is otherwise offensive, vulgar or obscene.
+                                            </p>          
+                                        </div>
 
                                       </div>
                                   </div>
@@ -148,10 +155,9 @@
                                         <!-- Modal body -->
                                         <div class="p-6 space-y-6">
                                             <p class="font-paragraph-text text-base leading-relaxed text-gray-800">
-                                                With less than a month to go before the European Union enacts new consumer privacy laws for its citizens, companies around the world are updating their terms of service agreements to comply.
-                                            </p>
-                                            <p class="font-paragraph-text text-base leading-relaxed text-gray-800">
-                                                The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is meant to ensure a common set of data rights in the European Union. It requires organizations to notify users as soon as possible of high-risk data breaches that could personally affect them.
+                                                All employees and personnel of the school shall maintain the confidentiality and secrecy of all personal data that come to their 
+                                                knowledge and possession, even after resignation, termination of contract, or other contractual relations. Personal data under 
+                                                the custody of the school shall be disclosed only pursuant to a lawful purpose, and to authorized recipients of such data.
                                             </p>
                                         </div>
                                     </div>
@@ -176,17 +182,13 @@
                 <div class="mt-3 space-y-3">
                     <a href="{{ route('google.auth') }}"><button
                         type="button"
-                        class="relative inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-gray-700 transition-all duration-200 bg-white border-2 border-gray-200 rounded-md hover:bg-gray-100 focus:bg-gray-100 hover:text-black focus:text-black focus:outline-none"
-                    >
+                        class="relative inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-gray-700 transition-all duration-200 bg-white border-2 border-gray-200 rounded-md hover:bg-gray-100 focus:bg-gray-100 hover:text-black focus:text-black focus:outline-none">
                         <div class="absolute inset-y-0 left-0 p-4">
-                            <svg class="w-6 h-6 text-rose-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <svg class="w-6 h-6 text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                                 <path
-                                    d="M20.283 10.356h-8.327v3.451h4.792c-.446 2.193-2.313 3.453-4.792 3.453a5.27 5.27 0 0 1-5.279-5.28 5.27 5.27 0 0 1 5.279-5.279c1.259 0 2.397.447 3.29 1.178l2.6-2.599c-1.584-1.381-3.615-2.233-5.89-2.233a8.908 8.908 0 0 0-8.934 8.934 8.907 8.907 0 0 0 8.934 8.934c4.467 0 8.529-3.249 8.529-8.934 0-.528-.081-1.097-.202-1.625z"
-                                ></path>
+                                    d="M20.283 10.356h-8.327v3.451h4.792c-.446 2.193-2.313 3.453-4.792 3.453a5.27 5.27 0 0 1-5.279-5.28 5.27 5.27 0 0 1 5.279-5.279c1.259 0 2.397.447 3.29 1.178l2.6-2.599c-1.584-1.381-3.615-2.233-5.89-2.233a8.908 8.908 0 0 0-8.934 8.934 8.907 8.907 0 0 0 8.934 8.934c4.467 0 8.529-3.249 8.529-8.934 0-.528-.081-1.097-.202-1.625z"></path>
                             </svg>
-                        </div>
-                        Sign up with Google
-                    </button></a>
+                        </div>Sign up with Google</button></a>
 
                 </div>
             </div>

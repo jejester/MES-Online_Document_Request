@@ -6,7 +6,7 @@
     <div class="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl mb-24">
         <div class="grid items-center grid-cols-1 gap-y-12 lg:grid-cols-2 lg:gap-x-24">
             <div class="flex">
-                <img class="w-full max-w-md mx-auto" src="{{ asset('images/check-list.png') }}" alt="" />
+                <img class="max-w-md mx-auto h-48 w-48 lg:h-full lg:w-full" src="{{ asset('images/arrival.png') }}" alt="" />
             </div>
 
             <div class="mt-10 text-center lg:text-left">
@@ -19,14 +19,14 @@
                         <div class="mb-4 lg:mb-0">
                             <label for="first_name" class="font-title-text">Transaction Number</label>
                             <input type="text" class="text-center text-green-900 font-nav-text w-full py-3 mb-1
-                            bg-green-100 rounded-lg border-white text-sm md:text-lg" value="{{ request()->number }}"disabled>
+                            bg-green-100 rounded-lg border-white text-lg" value="{{ request()->number }}"disabled>
                         </div>
                     </div>
                     <div class="w-full pr-4">
                         <div class="mb-4 lg:mb-0">
                             <label for="first_name" class="font-title-text">Pin</label>
                             <input type="text" class="text-center text-green-900 font-nav-text w-full py-3 px-5 mb-1
-                            bg-green-100 rounded-lg border-white text-sm md:text-lg" value="{{ request()->pin }}" disabled>
+                            bg-green-100 rounded-lg border-white text-lg" value="{{ request()->pin }}" disabled>
                         </div>
                     </div>   
                 </div>
@@ -37,7 +37,7 @@
                 <div class="w-full pr-4">
                     <div class="mb-4 lg:mb-0">
                         <input type="text" class="text-center text-green-900 font-nav-text w-full py-3 px-5 mb-1
-                        bg-green-100 rounded-lg border-white text-sm md:text-lg" value="{{ request()->status }}" disabled>
+                        bg-green-100 rounded-lg border-white text-lg" value="{{ request()->status }}" disabled>
                     </div>
                 </div> 
                 

@@ -5,6 +5,10 @@ namespace App\Http\Livewire;
 use Carbon\Carbon;
 use Livewire\Component;
 use App\Models\StudentRequest;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\StudentRequestSuccessMail;
 
 
 class StudentMultiStepForm extends Component
@@ -21,13 +25,15 @@ class StudentMultiStepForm extends Component
     public $email;
     public $contact;
     public $address;
+    public $grade;
+    public $section;
     public $lrn;
     public $document;
     public $birthday;
     public $terms;
     public $full_name;
 
-    public $totalSteps = 4;
+    public $totalSteps = 5;
     public $currentStep = 1;
 
     public function mount()
@@ -62,19 +68,21 @@ class StudentMultiStepForm extends Component
                 'middle_name'=>'required|regex:/^[\pL\s\-]+$/u|max:46',
                 'last_name'=>'required|regex:/^[\pL\s\-]+$/u|max:46',
                 'gender'=>'required',
-                'birthday'=>'required',
+                'birthday'=>'required|before:today',
                 'terms'=>'accepted'
             ]);
         }
         elseif($this->currentStep == 2){
               $this->validate([
                 'email'=>'required|email|max:62',
-                'contact'=>'required|integer',
+                'contact'=>'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:11|max:11',
                 'address'=>'required|string|max:255'
               ]);
         }
         elseif($this->currentStep == 3){
               $this->validate([
+                'grade'=>'required',
+                'section'=>'required|regex:/^[\pL\s\-]+$/u|max:46',
                 'lrn'=>'required|max:72',
                 'document'=>'required'
               ]);
@@ -117,6 +125,7 @@ class StudentMultiStepForm extends Component
         $tracking_number = generate();
 
         $values = array(
+            "user_id" =>Auth::user()->id,
             "first_name"=>$this->first_name,
             "middle_name"=>$this->middle_name,
             "last_name"=>$this->last_name,
@@ -124,6 +133,8 @@ class StudentMultiStepForm extends Component
             "email"=>$this->email,
             "contact"=>$this->contact,
             "address"=>$this->address,
+            "grade"=>$this->grade,
+            "section"=>$this->section,
             "lrn"=>$this->lrn,
             "document"=>$this->document,
             "birthday"=>$this->birthday,
@@ -132,12 +143,23 @@ class StudentMultiStepForm extends Component
             "pin"=>$pin
         );
 
+        $u_id = Auth::user()->id;
 
-        StudentRequest::insert($values);
-        $data= $tracking_number;
-        $name= $this->first_name;
-        $p = $pin;
-        return redirect()->route('request-sucess',['name'=> $name,'number'=>$data, 'pin'=>$p]);
+        if(DB::table('student_requests')->where('user_id', $u_id)->exists() || DB::table('processing_student_requests')->where('user_id', $u_id)->exists() || DB::table('student_docs_readyfor_pickups')->where('user_id', $u_id)->exists())
+        {
+            return redirect()->back()->with('message', 'Request Invalid, You still have a pending request.');
+        }
+
+        else
+        {   
+            StudentRequest::insert($values);
+            $email = $this->email;
+            $data= $tracking_number;
+            $name= $this->first_name;
+            $p = $pin;
+            Mail::to($email)->send(new StudentRequestSuccessMail($data, $name, $p));
+            return redirect()->route('request-sucess',['name'=> $name,'number'=>$data, 'pin'=>$p]);
+        }
 
         
     }
