@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class StudentRequestSuccessMail extends Mailable
+class EmployeeRequestSuccessMail extends Mailable
 {
     use Queueable, SerializesModels;
     public $data;
@@ -35,7 +35,7 @@ class StudentRequestSuccessMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Student Request Success',
+            subject: 'Employee Request Success',
         );
     }
 
@@ -47,7 +47,7 @@ class StudentRequestSuccessMail extends Mailable
     public function content()
     {
         return new Content(
-            markdown: 'emails.student_request_success',
+            markdown: 'emails.employee_request_success',
         );
     }
 

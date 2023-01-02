@@ -15,7 +15,7 @@
         <div class="container flex flex-wrap justify-between items-center mx-auto">
         <a href="{{ route('home') }}" class="flex items-center">
             <img src="{{ asset('images/mes_logo.png') }}" class="mr-1 h-10 sm:h-16" alt="MES Logo">
-            <span class="self-center text-lg md:text-xl font-logo-text whitespace-nowrap text-green-900">Maligaya Elementary School</span>
+            <span class="self-center text-lg md:text-xl leading-none sm:leading-normal font-logo-text whitespace-nowrap text-green-900">Maligaya <br class="sm:hidden"> Elementary School</span>
         </a>
         <button data-collapse-toggle="navbar-solid-bg" type="button" class="inline-flex justify-center items-center ml-3 text-green-900 rounded-lg md:hidden hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-green-900 " aria-controls="navbar-solid-bg" aria-expanded="false">
             <span class="sr-only">Open main menu</span>

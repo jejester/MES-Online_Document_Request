@@ -4,6 +4,29 @@
     {{ session()->get('message') }}
     </div>
     @endif
+
+
+    
+    @if (date("l")== "Saturday" || date("l")== "Sunday" || date("H:i") >= "17:01")
+    
+        <div class="relative flex flex-col mb-10 w-80 sm:w-6/12 m-auto shadow-lg bg-gray-100 bg-opacity-80 rounded-lg p-10">
+                    <div class="m-auto flex flex-col lg:flex-col mb-1 sm:mb-10">
+                        <div class="w-full pr-4 pl-4">
+                            <div class="mb-4 lg:mb-0">
+                                <img class="h-52 w-52 mx-auto" src="{{ asset('images/caution.png') }}" alt="">
+                            </div>
+                        </div>
+    
+                        <div class="w-full pr-4 pl-4">
+                            <div class="mb-4 lg:mb-0">
+                                <p class="font-title-text text-center mx-auto">Website is currently close</p>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+
+    @else  
     
     <form wire:submit.prevent="register">
         @csrf
@@ -526,14 +549,9 @@
         </div>
 
         @endif
-    
-
-  
-
-        
-
 
     </form>
 
+    @endif
 
 </div>
