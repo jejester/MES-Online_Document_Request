@@ -3,15 +3,11 @@
 @section('content')
 <section class="py-10 sm:py-16 lg:py-24">
         <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div class="grid items-center grid-cols-1 gap-12 lg:grid-cols-2">
+            <div class="grid items-center text-center">
                 <div>
                     <h1 class="mt-4 text-4xl font-bold text-green-900 lg:mt-8 sm:text-6xl xl:text-8xl">Maligaya Elementary School</h1>
                     <a href="https://goo.gl/maps/deyBxUy2Ua6XRL1L9" target="blank"><p class="mt-6 text-lg sm:text-2xl font-paragraph-text 
                         leading-relaxed text-gray-900 hover:text-gray-500">Ilang Ilang St. Maligaya Park Subd. Brgy. Pasong Putik, Quezon City</p></a>
-                   
-                </div>
-                <div>
-                    <img class="w-full" src="{{ asset('images/hero-img.png') }}" alt="" />
                 </div>
             </div>
         </div>
@@ -30,13 +26,10 @@
 
             <div class="2xl:pl-16">
                 <h2 class="text-3xl font-logo-text leading-tight text-green-900 sm:text-4xl lg:text-5xl lg:leading-10">Mission</h2>
-                <p class="text-xl font-paragraph-text text-gray-900 mt-9">To protect and promote the right of every Filipino to quality, equitable, culture-based and complete basic education where:</p>
                 <blockquote class="mt-4 text-xl italic font-paragraph-text">
                     <svg aria-hidden="true" class="w-10 h-10 text-gray-600" viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.017 18L14.017 10.609C14.017 4.905 17.748 1.039 23 0L23.995 2.151C21.563 3.068 20 5.789 20 8H24V18H14.017ZM0 18V10.609C0 4.905 3.748 1.038 9 0L9.996 2.151C7.563 3.068 6 5.789 6 8H9.983L9.983 18L0 18Z" fill="currentColor"/></svg>
-                    <p class="text-xl font-paragraph-text text-gray-700">Students learn in a friendly, gender-sensitive, safe and motivating environment.
-                        Teachers facilitate learning and constantly nurture every learner
-                        Administrators and staff as stewards of the institution, ensure an enabling and supportive environment for effective learning to happen.
-                        Family, community and other stakeholders are actively engaged and share responsibility for developing lifelong learner.”</p>
+                    <p class="text-xl font-paragraph-text text-gray-700">We dream of Filipinos who passionately love their country and whose values and competencies enable them to realize their full potential and contribute meaningfully to building the nation.
+                        <br><br> As a learner-centered public institution, the Department of Education continuously improves itself to better serve its stakeholders.”</p>
                 </blockquote>
             </div>
 
@@ -56,9 +49,35 @@
         <div class="grid items-center grid-cols-1 lg:grid-cols-2 gap-x-12 xl:gap-x-24 gap-y-12">
             <div class="2xl:pl-16">
                 <h2 class="text-3xl font-logo-text leading-tight text-green-900 sm:text-4xl lg:text-5xl lg:leading-tight">Vision</h2>
-                <p class="text-xl font-paragraph-text text-gray-900 mt-9">We dream of Filipinos who passionately love their country and whose values and competencies enable them to realize their full potential and contribute meaningfully to building the nation. As a learner-centered public institution, the Department of Education continuously improves itself to better serve its stakeholders.</p>
-            </div>
+                <p class="text-xl font-paragraph-text text-gray-900 mt-9">To protect and promote the right of every Filipino to quality, equitable, culture-based, and complete basic education where:</p>
 
+                <ul class="mt-8 mb-8 space-y-4 text-left text-black">
+                    <li class="flex items-center space-x-3">
+                        
+                        <!-- Icon -->
+                        <svg class="flex-shrink-0 w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                        <span class="text-xl font-paragraph-text text-black italic"> Students learn in a child-friendly, gender-sensitive, safe and motivating environment.</span>
+                    </li>
+                    <li class="flex items-center space-x-3">
+                        <!-- Icon -->
+                        <svg class="flex-shrink-0 w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                        <span class="text-xl font-paragraph-text text-black italic">Teachers facilitate learning and constantly nurture every learner.</span>
+                    </li>
+                    <li class="flex items-center space-x-3">
+                        <!-- Icon -->
+                        <svg class="flex-shrink-0 w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                        <span class="text-xl font-paragraph-text text-black italic">Administrators and staff, as stewards of the institution, ensure an enabling and supportive environment for effective learning to happen.</span>
+                    </li>
+                    <li class="flex items-center space-x-3">
+                        <!-- Icon -->
+                        <svg class="flex-shrink-0 w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                        <span class="text-xl font-paragraph-text text-black italic">Family, community and  other stakeholders are actively engaged and share responsibility for developing life-long learners.</span>
+                    </li>
+    
+</ul>
+
+            </div>
+            
             <div class="relative lg:mb-12">
                 <img class="absolute -right-0 -bottom-8 xl:-bottom-12 xl:-right-4" src="https://cdn.rareblocks.xyz/collection/celebration/images/content/3/dots-pattern.svg" alt="" />
                 <div class="pl-12 pr-6">
@@ -72,143 +91,33 @@
 
 
 <section class="py-10 bg-white sm:py-16 lg:py-24">
-    <div class="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
-        <div class="max-w-2xl mx-auto text-center">
-            <h2 class="text-3xl font-logo-text leading-tight text-green-900 sm:text-4xl lg:text-5xl">Core Values</h2>
+    <div class="max-w-5xl px-4 mx-auto sm:px-6 lg:px-8">
+        <div class="mx-auto text-left md:max-w-lg lg:max-w-2xl md:text-center">
+            <h2 class="text-3xl font-bold leading-tight text-green-900 sm:text-4xl lg:text-5xl lg:leading-tight">
+                Our
+                <span class="relative inline-block">
+                    <span class="absolute inline-block w-full h-2 bg-yellow-200 bottom-1.5"></span>
+                    <span class="relative"> History </span>
+                </span>
+            </h2>
         </div>
 
-        <div class="grid grid-cols-1 gap-6 mt-8 lg:mt-16 xl:gap-10 sm:grid-cols-2 lg:grid-cols-2">
-            <div class="overflow-hidden bg-white rounded-lg shadow-xl hover:shadow-2xl hover:shadow-red-300">
-                <div class="p-8">
-                    <div class="flex items-center">
-                        <img class="flex-shrink-0 w-12 h-auto" src="{{ asset('images/makadiyos.png') }}" alt="" />
-                        <div class="ml-5 mr-auto">
-                            <p class="text-xl font-title-text text-black">Makadiyos</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-center mt-5">
-                            <ul class="mb-8 space-y-4 text-center text-gray-700 font-paragraph-text">
-                                <li class="flex items-center space-x-3">
-                                    <!-- Icon -->
-                                    <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                                    <span>Manalangin</span>
-                                </li>
-                                <li class="flex items-center space-x-3">
-                                    <!-- Icon -->
-                                    <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                                    <span>Gawing sentro ng buhay ang Diyos</span>
-                                </li>
-                            </ul>
-                    </div>
-                </div>
+        <div class="grid grid-cols-1 mt-8 md:mt-20 gap-y-6 md:grid-cols-2 gap-x-10">
+            <div>
+                <img class="w-full mx-auto mt-10 sm:max-w-xs rounded-lg" src="{{ asset('images/maligaya2.jpeg') }}" alt="" />
             </div>
 
-            <div class="overflow-hidden bg-white rounded shadow-xl hover:shadow-2xl hover:shadow-yellow-300">
-                <div class="p-8">
-                    <div class="flex items-center">
-                        <img class="flex-shrink-0 w-12 h-auto" src="{{ asset('images/makatao.png') }}" alt="" />
-                        <div class="ml-5 mr-auto">
-                            <p class="text-xl font-title-text text-black">Makatao</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-center mt-5">
-                        <ul class="mb-8 space-y-4 text-center text-gray-700 font-paragraph-text">
-                            <li class="flex items-center space-x-3">
-                                <!-- Icon -->
-                                <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                                <span>Magmalasakit at ipakita ang respeto.</span>
-                            </li>
-                            <li class="flex items-center space-x-3">
-                                <!-- Icon -->
-                                <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                                <span>Magbahagi lamang ng tamang impormasyon at totoong balita.</span>
-                            </li>
-                            <li class="flex items-center space-x-3">
-                                <!-- Icon -->
-                                <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                                <span>Tumulong sa abot ng inyong makakaya.</span>
-                            </li>
-                        </ul>
-                </div>
-                </div>
+            <div>
+                <h3 class="text-xl font-title-text text-gray-900">Maligaya Elementary School</h3>
+                <p class="mt-4 font-paragraph-text text-lg text-gray-700">is situated at the tip of QUEZON CITY, the school named after the subdivision Maligaya Park, Barangay Pasong Putik Proper, Novaliches, Quezon City.</p>
+                <p class="mt-4 font-paragraph-text text-lg text-gray-700">Maligaya Elementary School was established as an annex of DELFIN M. GERALDEZ Elementary which is almost two kilometers away from the main road. It was a two-storey ten classroom Simon Building constructed in 1981. There were 11 teachers, 703 pupils and a Master Teacher as Officer-in-Charge in the person of MRS. CRISTINA O. GARVIDA. Enrolment increased yearly including the facilities and equipment. The school became independent in 1992.</p>
+                <p class="mt-4 font-paragraph-text text-lg text-gray-700">The land area of 5,129 sqm.  lot was donated to the Quezon City Government for school purposes by PAUL SYCIP with TCT No. 8903149905 during the time of then MAYOR Ismael Mathay, Jr. on October 13, 1994.</p>
+                <p class="mt-4 font-paragraph-text text-lg text-gray-700">In 1992, another three-storey 12 classroom building was constructed in response to the rapid increase in enrolment. From 11 teachers, it became 26 under Mrs. Alejandria J. Agbayani’s leadership.</p>
             </div>
-
-            <div class="overflow-hidden bg-white rounded shadow-xl hover:shadow-2xl hover:shadow-green-300">
-                <div class="p-8">
-                    <div class="flex items-center">
-                        <img class="flex-shrink-0 w-12 h-auto" src="{{ asset('images/makakalikasan.png') }}" alt="" />
-                        <div class="ml-5 mr-auto">
-                            <p class="text-xl font-title-text text-black">Makakalikasan</p>
-        
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-center mt-9">
-                    <ul class="mb-8 space-y-4 text-center text-gray-700 font-paragraph-text">
-                        <li class="flex items-center space-x-3">
-                            <!-- Icon -->
-                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                            <span>Maglinis ng inyong bahay</span>
-                        </li>
-                        <li class="flex items-center space-x-3">
-                            <!-- Icon -->
-                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                            <span>Magtanim ng halaman</span>
-                        </li>
-                        <li class="flex items-center space-x-3">
-                            <!-- Icon -->
-                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                            <span>Maging disiplinado</span>
-                        </li>
-                        <li class="flex items-center space-x-3">
-                            <!-- Icon -->
-                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                            <span>Reuse, Reduce, Recycle</span>
-                        </li>
-                    </ul>
-                </div>
-                </div>
-            </div>
-
-            <div class="overflow-hidden bg-white rounded shadow-xl hover:shadow-2xl hover:shadow-primary-300">
-                <div class="p-8">
-                    <div class="flex items-center">
-                        <img class="flex-shrink-0 w-12 h-auto" src="{{ asset('images/makabansa.png') }}" alt="" />
-                        <div class="ml-5 mr-auto">
-                            <p class="text-xl font-title-text text-black">Makabansa</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-center mt-5">
-                        <ul class="mb-8 space-y-4 text-center text-gray-700 font-paragraph-text">
-                            <li class="flex items-center space-x-3">
-                                <!-- Icon -->
-                                <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                                <span>Sumunod sa tuntunin</span>
-                            </li>
-                            <li class="flex items-center space-x-3">
-                                <!-- Icon -->
-                                <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                                <span>Makiisa sa inyong komunidad</span>
-                            </li>
-                            <li class="flex items-center space-x-3">
-                                <!-- Icon -->
-                                <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                                <span>Makipag-ugnayan ng maayos sa inyong barangay</span>
-                            </li>
-                            <li class="flex items-center space-x-3">
-                                <!-- Icon -->
-                                <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                                <span>Ipakita ang tama</span>
-                            </li>
-                            <li class="flex items-center space-x-3">
-                                <!-- Icon -->
-                                <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                                <span>Ipagmalaki na ikaw ay Pilipino sa isip, sa salita at sa gawa</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+        </div>
+    </div>
 </section>
+
 
 
 <section class="py-10 sm:py-16 lg:py-24">

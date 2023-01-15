@@ -5,7 +5,7 @@
     <div class="grid grid-cols-1">
         <div class="flex items-center justify-center px-4 py-10sm:px-6 lg:px-8 sm:py-16 lg:py-24">
             <div class="xl:w-full xl:max-w-sm 2xl:max-w-md xl:mx-auto">
-                <h2 class="text-3xl font-logo-text leading-tight text-green-900 sm:text-4xl">Reset Passoword</h2>
+                <h2 class="text-3xl font-logo-text leading-tight text-green-900 sm:text-4xl">Reset Password</h2>
                 <p class="font-paragraph-text mt-2 text-base text-gray-600">Enter your new password</p>
 
                 @if (session('status'))

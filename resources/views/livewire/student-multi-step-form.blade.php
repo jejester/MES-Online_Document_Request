@@ -7,7 +7,7 @@
 
 
     
-    @if (date("l")== "Saturday" || date("l")== "Sunday" || date("H:i") >= "17:01")
+    {{-- @if (date("l")== "Saturday" || date("l")== "Sunday" /*| date("H:i") >= "17:01"*/)
     
         <div class="relative flex flex-col mb-10 w-80 sm:w-6/12 m-auto shadow-lg bg-gray-100 bg-opacity-80 rounded-lg p-10">
                     <div class="m-auto flex flex-col lg:flex-col mb-1 sm:mb-10">
@@ -26,7 +26,7 @@
             </div>
 
 
-    @else  
+    @else --}}
     
     <form wire:submit.prevent="register">
         @csrf
@@ -552,6 +552,6 @@
 
     </form>
 
-    @endif
+    {{-- @endif --}}
 
 </div>

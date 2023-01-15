@@ -24,7 +24,8 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
         'name',
         'email',
         'password',
-        'google_id'
+        'google_id',
+        'is_admin'
     ];
 
     /**
@@ -48,6 +49,6 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
 
     public function canAccessFilament(): bool
     {
-        return str_ends_with($this->email, '@admin.com') && $this->hasVerifiedEmail(); 
+        return $this->is_admin == '1'; 
     }
 }

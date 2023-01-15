@@ -22,6 +22,7 @@ class ProcessingStudentRequest extends Model
         'document',
         'tracking_number',
         'pin',
-        'status'
+        'status',
+        'approved_by'
     ];
 }
