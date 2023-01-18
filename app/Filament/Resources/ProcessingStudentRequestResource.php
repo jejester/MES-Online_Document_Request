@@ -7,20 +7,22 @@ use Filament\Forms;
 use Filament\Tables;
 use Filament\Resources\Form;
 use Filament\Resources\Table;
+use App\Mail\StudentPickupMail;
 use Filament\Resources\Resource;
 use Illuminate\Support\Facades\DB;
 use Filament\Forms\Components\Card;
+use Filament\Tables\Filters\Filter;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Models\ProcessingStudentRequest;
 use Filament\Forms\Components\TextInput;
 use App\Models\StudentDocsReadyforPickup;
+use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Forms\Components\DateTimePicker;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\ProcessingStudentRequestResource\Pages;
 use App\Filament\Resources\ProcessingStudentRequestResource\RelationManagers;
-use App\Mail\StudentPickupMail;
-use Illuminate\Support\Facades\Auth;
 
 class ProcessingStudentRequestResource extends Resource
 {
@@ -103,6 +105,26 @@ class ProcessingStudentRequestResource extends Resource
                 })
                 ->requiresConfirmation()
                 ->color('success'),
+            ])->filters([
+                SelectFilter::make('grade')
+                ->options([
+                    'Kinder' => 'Kinder',
+                    'Grade 1' => 'Grade 1',
+                    'Grade 2' => 'Grade 2',
+                    'Grade 3' => 'Grade 3',
+                    'Grade 4' => 'Grade 4',
+                    'Grade 5' => 'Grade 5',
+                    'Grade 6' => 'Grade 6',
+                ])
+                ->attribute('grade'),
+                Filter::make('f137')
+                ->query(fn (Builder $query): Builder => $query->where('document', 'Form-137'))->label('Form-137'),
+                Filter::make('coe')
+                ->query(fn (Builder $query): Builder => $query->where('document', 'Certificate of Enrollment'))->label('Certificate of Enrollment'),
+                Filter::make('cog')
+                ->query(fn (Builder $query): Builder => $query->where('document', 'Certificate of Graduation'))->label('Certificate of Graduation'),
+                Filter::make('cgm')
+                ->query(fn (Builder $query): Builder => $query->where('document', 'Certificate of Good Moral'))->label('Certificate of Good Moral'),
             ])
             ->bulkActions([
 

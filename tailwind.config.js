@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
 const colors = require('tailwindcss/colors');
+
 module.exports = {
   content: [
     "./resources/**/*.blade.php",
@@ -22,8 +23,8 @@ module.exports = {
     colors: { 
       danger: colors.rose,
       primary: colors.blue,
-      success: colors.green,
-      warning: colors.yellow,
+      success: colors.yellow,
+      warning: colors.green,
   }, 
 
     extend: {},

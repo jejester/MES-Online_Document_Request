@@ -11,6 +11,8 @@ use App\Models\EmployeeBacklogs;
 use Filament\Resources\Resource;
 use Illuminate\Support\Facades\DB;
 use Filament\Forms\Components\Card;
+use Filament\Tables\Filters\Filter;
+use Illuminate\Support\Facades\Auth;
 use Filament\Forms\Components\TextInput;
 use App\Models\EmployeeCompletedRequests;
 use Illuminate\Database\Eloquent\Builder;
@@ -61,6 +63,7 @@ class EmployeeDocsReadyforPickupResource extends Resource
             Tables\Columns\TextColumn::make('employee_id')->label('Employee ID'),
             Tables\Columns\TextColumn::make('document')->label('Document Requesting'),
             Tables\Columns\TextColumn::make('contact'),
+            Tables\Columns\TextColumn::make('approved_by'),
         ])
         ->filters([
             //
@@ -84,6 +87,7 @@ class EmployeeDocsReadyforPickupResource extends Resource
                     "tracking_number"=>$record->tracking_number,
                     "pin"=>$record->pin,
                     "status"=>2,
+                    "released_by"=>Auth::user()->name,
                 );
 
                 EmployeeCompletedRequests::insert($values);
@@ -114,10 +118,15 @@ class EmployeeDocsReadyforPickupResource extends Resource
                 );
 
                 EmployeeBacklogs::insert($values);
-                DB::table('student_docs_readyfor_pickups')->delete($record->id);
+                DB::table('employee_docs_readyfor_pickups')->delete($record->id);
             })
             ->requiresConfirmation()
             ->color('danger'),
+        ])->filters([
+            Filter::make('fds')
+            ->query(fn (Builder $query): Builder => $query->where('document', 'FDS'))->label('FDS'),
+            Filter::make('coe')
+            ->query(fn (Builder $query): Builder => $query->where('document', 'Certificate of Employment'))->label('Certificate of Employment'),
         ])
         ->bulkActions([
 

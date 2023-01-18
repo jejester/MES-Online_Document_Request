@@ -305,7 +305,7 @@
                                            <option value="Grade 4">Grade 4</option>
                                            <option value="Grade 5">Grade 5</option>
                                            <option value="Grade 6">Grade 6</option>
-                                           <option value="Alumni">Alumni</option>
+                                           {{-- <option value="Alumni">Alumni</option> --}}
                                     </select>
                                     <span class="text-red-600 text-sm">@error('grade'){{ $message }}@enderror</span>
                                 </div>
@@ -313,7 +313,7 @@
                         </div>
 
 
-                        @if ($grade == "Alumni")
+                        {{-- @if ($grade == "Alumni")
                         <div class="w-full pr-4 pl-4">
                             <div class="mb-4">
                                 <label for="section" class="font-title-text text-base text-green-900">Year Graduated</label>
@@ -322,7 +322,7 @@
                                 <span class="text-red-600 text-sm">@error('section'){{ $message }}@enderror</span>
                             </div>
                         </div>
-                        @else
+                        @else --}}
                         <div class="w-full pr-4 pl-4">
                             <div class="mb-4">
                                 <label for="section" class="font-title-text text-base text-green-900">Section Name</label>
@@ -331,7 +331,7 @@
                                 <span class="text-red-600 text-sm">@error('section'){{ $message }}@enderror</span>
                             </div>
                         </div>
-                        @endif
+                        {{-- @endif --}}
 
                        
 

@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\StudentRequestResource\Pages;
 
 use App\Filament\Resources\StudentRequestResource;
+use App\Filament\Resources\StudentRequestResource\Widgets\StudentRequestOverview;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\ListRecords;
 
@@ -14,6 +15,13 @@ class ListStudentRequests extends ListRecords
     {
         return [
             Actions\CreateAction::make(),
+        ];
+    }
+
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            StudentRequestOverview::class
         ];
     }
 }

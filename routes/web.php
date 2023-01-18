@@ -3,15 +3,16 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TrackRequestStatus;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\TrackRequestController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\StudentRequestController;
+use App\Http\Controllers\Contact\ContactController;
 use App\Http\Controllers\EmployeeRequestController;
 use App\Http\Controllers\EmployeeRequestSuccessController;
-use App\Http\Controllers\TrackRequestStatus;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,3 +81,6 @@ Route::controller(TrackRequestController::class)->group(function(){
 });
 
 Route::get('track_request/status', [TrackRequestStatus::class, 'index'])->name('request.status');
+
+Route::get('/contact',[ContactController::class, 'index'])->name('contact.show');
+Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');

@@ -283,7 +283,7 @@
                                         bg-white rounded-lg border-white shadow-lg text-sm md:text-base  placeholder:text-xs md:placeholder:text-base" wire:model="document">
                                                <option value="" selected>Select document</option>
                                                <option value="FDS">FDS</option>
-                                               <option value="Certificate of Employement">Certificate of Employement</option>
+                                               <option value="Certificate of Employment">Certificate of Employment</option>
                                         </select>
                                         <span class="text-red-600 text-sm">@error('document'){{ $message }}@enderror</span>
                                     </div>

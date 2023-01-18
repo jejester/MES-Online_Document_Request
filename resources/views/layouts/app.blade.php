@@ -28,7 +28,7 @@
                 text-green-900 rounded hover:bg-green-500 hover:text-white md:hover:bg-transparent md:border-0 md:hover:text-green-500 md:p-0">About</a>
             </li>
             <li>
-                <a href="{{ route('contact') }}" class="font-nav-text text-lg block py-2 pr-4 pl-3
+                <a href="{{ route('contact.show') }}" class="font-nav-text text-lg block py-2 pr-4 pl-3
                 text-green-900 rounded hover:bg-green-500 hover:text-white  md:hover:bg-transparent md:border-0
                 md:hover:text-green-500 md:p-0">Contact</a>
             </li>
@@ -82,18 +82,7 @@
                 <span class="self-center text-green-900 text-2xl font-logo-text"><abbr class="decoration-transparent" title="Maligaya Elementary School">MES</abbr></span>
             </a>
         </div>
-        <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-2">
-            <div>
-                <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">Follow us</h2>
-                <ul class="text-green-900">
-                    <li class="mb-4">
-                        <a href="https://github.com/themesberg/flowbite" class="hover:underline ">Github</a>
-                    </li>
-                    <li>
-                        <a href="https://discord.gg/4eeurUVvTy" class="hover:underline">Discord</a>
-                    </li>
-                </ul>
-            </div>
+        <div class="grid grid-cols-1 gap-8 sm:gap-6 sm:grid-cols-1">
             <div>
                 <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">Legal</h2>
                 <ul class="text-green-900">
@@ -125,12 +114,19 @@
                             </div>
                             <!-- Modal body -->
                             <div class="p-6 space-y-6">
-                                <p class="font-paragraph-text text-base leading-relaxed text-gray-800">
-                                    With less than a month to go before the European Union enacts new consumer privacy laws for its citizens, companies around the world are updating their terms of service agreements to comply.
-                                </p>
-                                <p class="font-paragraph-text text-base leading-relaxed text-gray-800">
-                                    The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is meant to ensure a common set of data rights in the European Union. It requires organizations to notify users as soon as possible of high-risk data breaches that could personally affect them.
-                                </p>
+                                <p class="font-paragraph-text text-sm sm:text-base leading-relaxed text-gray-800">
+                                    When you create an account with us, you must provide us information that is accurate, complete, and
+                                    current at all times. Failure to do so constitutes a breach of the Terms, which may result in immediate
+                                    termination of your account on our service. <br>
+                                    You are responsible for safeguarding the password that You use to access the service and for any activities
+                                    or actions under your password, whether your password is with our service or a third-party Social Media
+                                    Service. <br>
+                                    You agree not to disclose your password to any third party. You must notify us immediately upon becoming
+                                    aware of any breach of security or unauthorized use of Your account. <br>
+                                    You may not use as a username the name of another person or entity or that is not lawfully available for
+                                    use, a name or trademark that is subject to any rights of another person or entity other than you without
+                                    appropriate authorization, or a name that is otherwise offensive, vulgar or obscene.
+                                </p>          
                             </div>
 
                         </div>
@@ -155,10 +151,9 @@
                             <!-- Modal body -->
                             <div class="p-6 space-y-6">
                                 <p class="font-paragraph-text text-base leading-relaxed text-gray-800">
-                                    With less than a month to go before the European Union enacts new consumer privacy laws for its citizens, companies around the world are updating their terms of service agreements to comply.
-                                </p>
-                                <p class="font-paragraph-text text-base leading-relaxed text-gray-800">
-                                    The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is meant to ensure a common set of data rights in the European Union. It requires organizations to notify users as soon as possible of high-risk data breaches that could personally affect them.
+                                    All employees and personnel of the school shall maintain the confidentiality and secrecy of all personal data that come to their 
+                                    knowledge and possession, even after resignation, termination of contract, or other contractual relations. Personal data under 
+                                    the custody of the school shall be disclosed only pursuant to a lawful purpose, and to authorized recipients of such data.
                                 </p>
                             </div>
                         </div>

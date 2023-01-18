@@ -12,11 +12,16 @@ use Illuminate\Support\Carbon;
 use Filament\Resources\Resource;
 use Illuminate\Support\Facades\DB;
 use Filament\Forms\Components\Card;
+use Filament\Tables\Filters\Filter;
+use Filament\Tables\Filters\Layout;
+use Illuminate\Support\Facades\Auth;
 use App\Models\ProcessingStudentRequest;
 use Filament\Forms\Components\TextInput;
+use Illuminate\Database\Eloquent\Builder;
 use Filament\Forms\Components\DateTimePicker;
 use App\Filament\Resources\StudentRequestResource\Pages;
-use Illuminate\Support\Facades\Auth;
+use App\Filament\Resources\StudentRequestResource\Widgets\StudentRequestOverview;
+use Filament\Tables\Filters\SelectFilter;
 
 class StudentRequestResource extends Resource
 {
@@ -58,9 +63,9 @@ class StudentRequestResource extends Resource
                 Tables\Columns\TextColumn::make('created_at')->label('Date Requested')->sortable()->date('F j, Y / h:i A'),
                 Tables\Columns\TextColumn::make('first_name')->searchable(),
                 Tables\Columns\TextColumn::make('last_name')->searchable(),
-                Tables\Columns\TextColumn::make('lrn')->label('LRN'),
+                Tables\Columns\TextColumn::make('lrn')->label('LRN')->searchable(),
                 Tables\Columns\TextColumn::make('grade'),
-                Tables\Columns\TextColumn::make('section'),
+                Tables\Columns\TextColumn::make('section')->searchable(),
                 Tables\Columns\TextColumn::make('document')->label('Document Requesting'),
                 Tables\Columns\TextColumn::make('contact'),
                 
@@ -93,17 +98,51 @@ class StudentRequestResource extends Resource
                 })
                 ->requiresConfirmation()
                 ->color('success'),
+            ])->filters([
+                SelectFilter::make('grade')
+                ->options([
+                    'Kinder' => 'Kinder',
+                    'Grade 1' => 'Grade 1',
+                    'Grade 2' => 'Grade 2',
+                    'Grade 3' => 'Grade 3',
+                    'Grade 4' => 'Grade 4',
+                    'Grade 5' => 'Grade 5',
+                    'Grade 6' => 'Grade 6',
+                ])
+                ->attribute('grade'),
+                Filter::make('f137')
+                ->query(fn (Builder $query): Builder => $query->where('document', 'Form-137'))->label('Form-137'),
+                Filter::make('coe')
+                ->query(fn (Builder $query): Builder => $query->where('document', 'Certificate of Enrollment'))->label('Certificate of Enrollment'),
+                Filter::make('cog')
+                ->query(fn (Builder $query): Builder => $query->where('document', 'Certificate of Graduation'))->label('Certificate of Graduation'),
+                Filter::make('cgm')
+                ->query(fn (Builder $query): Builder => $query->where('document', 'Certificate of Good Moral'))->label('Certificate of Good Moral'),
             ])
             ->bulkActions([
 
             ]);
+            
     }
+
     
     public static function getRelations(): array
     {
         return [
             //
         ];
+    }
+
+    public static function getWidgets(): array
+    {
+        return [
+           StudentRequestOverview::class
+        ];
+    }
+
+    protected static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
     }
     
     public static function getPages(): array

@@ -48,11 +48,11 @@
         <div class="grid items-center md:grid-cols-2 gap-y-10 md:gap-x-20">
             <div>
                 <h2 class="text-3xl font-logo-text text-green-900 sm:text-4xl lg:text-5xl">For Students</h2>
-                <p class="mt-4 text-lg font-paragraph-text leading-relaxed text-gray-600">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.</p>
+                <p class="mt-4 text-lg font-paragraph-text leading-relaxed text-gray-600">We're happy to accomodate your requests. Open for all students of Maligaya Elementary School.</p>
             </div>
             <div class="pr-12 sm:pr-0">
                 <div class="relative max-w-xs mb-12">
-                    <img class="object-bottom rounded-md shadow-2xl max-h-96" src="{{ asset('images/school.jpg') }}" alt="" />
+                    <img class="object-bottom rounded-md shadow-2xl max-h-96" src="{{ asset('images/maligaya2.jpeg') }}" alt="" />
 
                     <img class="absolute origin-bottom-right scale-75 rounded-full -bottom-12 -right-12 shadow-2xl" src="{{ asset('images/students.jpg') }}" alt="" />
                 </div>
@@ -69,11 +69,11 @@
         <div class="grid items-center md:grid-cols-2 gap-y-10 md:gap-x-20">
             <div class="flex flex-col sm:hidden">
                 <h2 class="text-3xl font-logo-text text-green-900 sm:text-4xl lg:text-5xl">For Employees</h2>
-                <p class="mt-4 text-lg font-paragraph-text leading-relaxed text-gray-600">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.</p>
+                <p class="mt-4 text-lg font-paragraph-text leading-relaxed text-gray-600">And open for all employees of Maligaya Elementary School.</p>
             </div>
             <div class="pr-12 sm:pr-0">
                 <div class="relative max-w-xs mb-12">
-                    <img class="object-bottom rounded-md shadow-2xl max-h-96" src="{{ asset('images/school.jpg') }}" alt="" />
+                    <img class="object-bottom rounded-md shadow-2xl max-h-96" src="{{ asset('images/maligaya2.jpeg') }}" alt="" />
 
                     <img class="absolute origin-bottom-right scale-75 rounded-full -bottom-12 -right-12 shadow-2xl max-h-50" src="{{ asset('images/faculty.jpg') }}" alt="" />
                 </div>
@@ -81,39 +81,40 @@
 
             <div class="hidden sm:flex sm:flex-col">
                 <h2 class="text-3xl font-logo-text text-green-900 sm:text-4xl lg:text-5xl">For Employees</h2>
-                <p class="mt-4 text-lg font-paragraph-text leading-relaxed text-gray-600">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.</p>
+                <p class="mt-4 text-lg font-paragraph-text leading-relaxed text-gray-600">And open for all employees of Maligaya Elementary School.</p>
             </div>
            
         </div>
     </div>
 </section>
 
+
 <section class="py-10 bg-white bg-opacity-70 sm:py-16 lg:py-24">
     <div class="max-w-6xl px-4 mx-auto sm:px-6 lg:px-8">
-        <h2 class="text-3xl font-bold leading-tight text-black sm:text-4xl lg:text-5xl">Frequently Asked Questions</h2>
+        <h2 class="text-3xl font-logo-text leading-tight text-green-900 sm:text-4xl lg:text-5xl">Frequently Asked Questions</h2>
 
         <div class="flow-root mt-12 sm:mt-16">
             <div class="divide-y divide-gray--200 -my-9">
                 <div class="py-9">
-                    <p class="text-xl font-semibold text-black">How to create an account?</p>
-                    <p class="mt-3 text-base text-gray-600">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.</p>
-                    <p class="mt-3 text-base text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p class="text-xl font-title-text text-blue-700">How to create an account?</p>
+                    <p class="mt-3 text-lg font-paragraph-text text-gray-600">Fill in your name, email and password in the form provided in the registration page.</p>
+                    <p class="text-lg font-paragraph-text text-gray-600">After clicking register button, confirm your email address. By clicking the link in the email that we'll send to you.</p>
                 </div>
 
                 <div class="py-9">
-                    <p class="text-xl font-semibold text-black">What payment method do you support?</p>
-                    <p class="mt-3 text-base text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam.</p>
+                    <p class="text-xl font-title-text text-blue-700">What payment method do you support?</p>
+                    <p class="text-lg font-paragraph-text text-gray-600">Requesting a document is free and doesn't have charges. Just bring your identification cards if you're picking up a document.</p>
                 </div>
 
                 <div class="py-9">
-                    <p class="text-xl font-semibold text-black">What payment method do you support?</p>
-                    <p class="mt-3 text-base text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p class="text-xl font-title-text text-blue-700">How long does it take to process my request?</p>
+                    <p class="text-lg font-paragraph-text text-gray-600">The whole process takes around 3 to 5 days, since we first need to confirm every identity and information of requestors then process each documents.</p>
                 </div>
 
                 <div class="py-9">
-                    <p class="text-xl font-semibold text-black">How do you provide support?</p>
-                    <p class="mt-3 text-base text-gray-600">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt <a href="#" title="" class="text-blue-600 transition-all duration-200 hover:text-blue-700 focus:text-blue-700 hover:underline">support@Celebration.com</a>
+                    <p class="text-xl font-title-text text-blue-700">How do you provide support?</p>
+                    <p class="text-lg font-paragraph-text text-gray-600">
+                        If you have any inquiries or questions, you can reach and contact us at our <a href="{{ route('contact.show') }}" title="" class="text-blue-600 transition-all duration-200 hover:text-blue-700 focus:text-blue-700 hover:underline">Contact Page.</a>
                     </p>
                 </div>
             </div>

@@ -11,10 +11,14 @@ use App\Models\EmployeeRequest;
 use Filament\Resources\Resource;
 use Illuminate\Support\Facades\DB;
 use Filament\Forms\Components\Card;
+use Filament\Tables\Filters\Filter;
+use Illuminate\Support\Facades\Auth;
 use Filament\Forms\Components\TextInput;
 use App\Models\ProcessingEmployeeRequest;
+use Illuminate\Database\Eloquent\Builder;
 use Filament\Forms\Components\DateTimePicker;
 use App\Filament\Resources\EmployeeRequestResource\Pages;
+use App\Filament\Resources\EmployeeRequestResource\Widgets\EmployeeRequestOverview;
 
 class EmployeeRequestResource extends Resource
 {
@@ -76,12 +80,18 @@ class EmployeeRequestResource extends Resource
                         "tracking_number"=>$record->tracking_number,
                         "pin"=>$record->pin,
                         "status"=>1,
+                        "approved_by"=>Auth::user()->name,
                     );
                     ProcessingEmployeeRequest::insert($values);
                     DB::table('employee_requests')->delete($record->id);
                 })
                 ->requiresConfirmation()
                 ->color('success'),
+            ])->filters([
+                Filter::make('fds')
+                ->query(fn (Builder $query): Builder => $query->where('document', 'FDS'))->label('FDS'),
+                Filter::make('coe')
+                ->query(fn (Builder $query): Builder => $query->where('document', 'Certificate of Employment'))->label('Certificate of Employment'),
             ])
             ->bulkActions([
                 
@@ -92,6 +102,18 @@ class EmployeeRequestResource extends Resource
     {
         return [
             //
+        ];
+    }
+
+    protected static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
+
+    public static function getWidgets(): array
+    {
+        return [
+           EmployeeRequestOverview::class
         ];
     }
     

@@ -7,9 +7,12 @@ use Filament\Forms;
 use Filament\Tables;
 use Filament\Resources\Form;
 use Filament\Resources\Table;
+use App\Mail\EmployeePickupMail;
 use Filament\Resources\Resource;
 use Illuminate\Support\Facades\DB;
 use Filament\Forms\Components\Card;
+use Filament\Tables\Filters\Filter;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Filament\Forms\Components\TextInput;
 use App\Models\ProcessingEmployeeRequest;
@@ -19,7 +22,6 @@ use Filament\Forms\Components\DateTimePicker;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\ProcessingEmployeeRequestResource\Pages;
 use App\Filament\Resources\ProcessingEmployeeRequestResource\RelationManagers;
-use App\Mail\EmployeePickupMail;
 
 class ProcessingEmployeeRequestResource extends Resource
 {
@@ -62,6 +64,7 @@ class ProcessingEmployeeRequestResource extends Resource
             Tables\Columns\TextColumn::make('employee_id')->label('Employee ID'),
             Tables\Columns\TextColumn::make('document')->label('Document Requesting'),
             Tables\Columns\TextColumn::make('contact'),
+            Tables\Columns\TextColumn::make('approved_by'),
         ])
         ->filters([
             //
@@ -85,6 +88,7 @@ class ProcessingEmployeeRequestResource extends Resource
                     "tracking_number"=>$record->tracking_number,
                     "pin"=>$record->pin,
                     "status"=>2,
+                    "approved_by"=>Auth::user()->name,
                 );
 
                 $tr = $record->tracking_number;
@@ -97,6 +101,11 @@ class ProcessingEmployeeRequestResource extends Resource
             })
             ->requiresConfirmation()
             ->color('success'),
+        ])->filters([
+            Filter::make('fds')
+            ->query(fn (Builder $query): Builder => $query->where('document', 'FDS'))->label('FDS'),
+            Filter::make('coe')
+            ->query(fn (Builder $query): Builder => $query->where('document', 'Certificate of Employment'))->label('Certificate of Employment'),
         ])
         ->bulkActions([
 
@@ -109,6 +118,8 @@ class ProcessingEmployeeRequestResource extends Resource
             //
         ];
     }
+
+    
     
     public static function getPages(): array
     {

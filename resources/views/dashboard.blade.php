@@ -27,7 +27,7 @@
                 text-green-900 rounded hover:bg-green-500 hover:text-white md:hover:bg-transparent md:border-0 md:hover:text-green-500 md:p-0">About</a>
             </li>
             <li>
-                <a href="{{ route('contact') }}" class="font-nav-text text-lg block py-2 pr-4 pl-3
+                <a href="{{ route('contact.show') }}" class="font-nav-text text-lg block py-2 pr-4 pl-3
                 text-green-900 rounded hover:bg-green-500 hover:text-white  md:hover:bg-transparent md:border-0
                 md:hover:text-green-500 md:p-0">Contact</a>
             </li>

@@ -61,7 +61,7 @@
                 <div class="px-6 py-12 sm:p-12">
                     <h3 class="text-3xl font-nav-text text-center text-green-900">Send us a message</h3>
 
-                    <form action="" method="POST" class="mt-14">
+                    <form action="{{ route('contact.submit') }}" method="POST" class="mt-14">
                         @csrf
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-4">
                             <div>

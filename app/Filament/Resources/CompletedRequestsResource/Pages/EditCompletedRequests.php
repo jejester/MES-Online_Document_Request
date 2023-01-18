@@ -13,9 +13,13 @@ class EditCompletedRequests extends EditRecord
     protected function getActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
+            Actions\DeleteAction::make()
+            ->modalHeading('Delete Request')
+            ->modalSubheading('Are you sure you\'d like to delete this request? This cannot be undone.'),
         ];
     }
+
+
     protected function getRedirectUrl(): string
     {
         return $this->getResource()::getUrl('index');

@@ -24,6 +24,7 @@ use App\Filament\Resources\UserResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\UserResource\Pages\EditUser;
 use App\Filament\Resources\UserResource\RelationManagers;
+use App\Filament\Resources\UserResource\Widgets\UserOverview;
 
 class UserResource extends Resource
 {
@@ -44,7 +45,7 @@ class UserResource extends Resource
                             ->label('Email Address')
                             ->required()
                             ->maxLength(255),
-                        Toggle::make('is_admin')->label('Is Admin'),
+                        Toggle::make('is_admin')->label('Is Admin')->inline(false),
                     ]),
                     Card::make()
                     ->schema([
@@ -63,7 +64,7 @@ class UserResource extends Resource
                         ->required(fn (Page $livewire): bool => $livewire instanceof CreateRecord)
                         ->minLength(8)
                         ->dehydrated(false)
-                    ])
+                    ]),
             ]);
     }
 
@@ -74,7 +75,7 @@ class UserResource extends Resource
                 TextColumn::make('name')->searchable()->sortable(),
                 TextColumn::make('email'),
                 BooleanColumn::make('is_admin')->label('Is Admin'),
-                TextColumn::make('created_at')->sortable()->date('F j, Y / H:i A'),
+                TextColumn::make('created_at')->sortable()->date('M-d-Y / H:i A'),
             ])
             ->filters([
                 Filter::make('is_admin')
@@ -89,6 +90,7 @@ class UserResource extends Resource
 
             ]);
     }
+
     
     public static function getRelations(): array
     {
@@ -96,6 +98,16 @@ class UserResource extends Resource
             //
         ];
     }
+
+    public static function getWidgets(): array
+    {
+        return [
+           UserOverview::class
+        ];
+    }
+
+
+
     
     public static function getPages(): array
     {

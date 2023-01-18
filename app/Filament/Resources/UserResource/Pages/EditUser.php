@@ -16,6 +16,14 @@ class EditUser extends EditRecord
             Actions\DeleteAction::make(),
         ];
     }
+
+    protected function mutateFormDataBeforeCreate(array $data): array
+    {
+        
+        return array_merge($data, [
+            'email_verified_at' => now()
+        ]);
+    }
     protected function getRedirectUrl(): string
     {
         return $this->getResource()::getUrl('index');
