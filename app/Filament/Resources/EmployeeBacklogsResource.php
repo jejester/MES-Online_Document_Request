@@ -16,6 +16,7 @@ use Filament\Forms\Components\DateTimePicker;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\EmployeeBacklogsResource\Pages;
 use App\Filament\Resources\EmployeeBacklogsResource\RelationManagers;
+use App\Filament\Resources\EmployeeBacklogsResource\Widgets\EmployeeBacklogsOverview;
 
 class EmployeeBacklogsResource extends Resource
 {
@@ -78,6 +79,13 @@ class EmployeeBacklogsResource extends Resource
     {
         return [
             //
+        ];
+    }
+
+    public static function getWidgets(): array
+    {
+        return [
+           EmployeeBacklogsOverview::class
         ];
     }
     

@@ -2,9 +2,10 @@
 
 namespace App\Filament\Resources\BacklogsResource\Pages;
 
-use App\Filament\Resources\BacklogsResource;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\ListRecords;
+use App\Filament\Resources\BacklogsResource;
+use App\Filament\Resources\BacklogsResource\Widgets\BacklogsOverview;
 
 class ListBacklogs extends ListRecords
 {
@@ -14,6 +15,13 @@ class ListBacklogs extends ListRecords
     {
         return [
             Actions\CreateAction::make(),
+        ];
+    }
+
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            BacklogsOverview::class
         ];
     }
 }

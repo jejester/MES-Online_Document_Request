@@ -16,6 +16,7 @@ use Filament\Forms\Components\DateTimePicker;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\EmployeeCompletedRequestsResource\Pages;
 use App\Filament\Resources\EmployeeCompletedRequestsResource\RelationManagers;
+use App\Filament\Resources\EmployeeCompletedRequestsResource\Widgets\EmployeeCompletedRequestsOverview;
 
 class EmployeeCompletedRequestsResource extends Resource
 {
@@ -79,6 +80,13 @@ class EmployeeCompletedRequestsResource extends Resource
     {
         return [
             //
+        ];
+    }
+
+    public static function getWidgets(): array
+    {
+        return [
+           EmployeeCompletedRequestsOverview::class
         ];
     }
     

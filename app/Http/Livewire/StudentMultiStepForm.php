@@ -150,6 +150,19 @@ class StudentMultiStepForm extends Component
             return redirect()->back()->with('message', 'Request Invalid, You still have a pending request.');
         }
 
+        elseif(DB::table('completed_requests')->where('user_id', $u_id)->value('lrn') == $this->lrn && DB::table('completed_requests')->where('user_id', $u_id)->value('document') == "Form-137"){
+            $db_date = DB::table('completed_requests')->where('user_id', $u_id)->value('created_at');
+            $date = date('F j, Y',strtotime($db_date));
+            return redirect()->back()->with('message', "You already requested and received a Form-137 on $date");
+        }
+
+        elseif(DB::table('completed_requests')->where('user_id', $u_id)->value('lrn') == $this->lrn && DB::table('completed_requests')->where('user_id', $u_id)->value('document') == "Certificate of Good Moral"){
+            $db_date = DB::table('completed_requests')->where('user_id', $u_id)->value('created_at');
+            $date = date('F j, Y',strtotime($db_date));
+            return redirect()->back()->with('message', "You already requested and received a Certificate of Good Moral on $date");
+        }
+        
+
         else
         {   
             StudentRequest::insert($values);

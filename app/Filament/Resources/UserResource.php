@@ -44,6 +44,7 @@ class UserResource extends Resource
                         TextInput::make('email')
                             ->label('Email Address')
                             ->required()
+                            ->unique(ignoreRecord: true)
                             ->maxLength(255),
                         Toggle::make('is_admin')->label('Is Admin')->inline(false),
                     ]),

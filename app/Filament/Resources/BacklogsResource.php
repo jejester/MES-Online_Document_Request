@@ -15,7 +15,7 @@ use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Forms\Components\DateTimePicker;
 use App\Filament\Resources\BacklogsResource\Pages;
-
+use App\Filament\Resources\BacklogsResource\Widgets\BacklogsOverview;
 
 class BacklogsResource extends Resource
 {
@@ -95,6 +95,13 @@ class BacklogsResource extends Resource
     {
         return [
             //
+        ];
+    }
+
+    public static function getWidgets(): array
+    {
+        return [
+           BacklogsOverview::class
         ];
     }
     

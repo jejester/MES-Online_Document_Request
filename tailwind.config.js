@@ -23,8 +23,8 @@ module.exports = {
     colors: { 
       danger: colors.rose,
       primary: colors.blue,
-      success: colors.yellow,
-      warning: colors.green,
+      success: colors.green,
+      warning: colors.yellow,
   }, 
 
     extend: {},

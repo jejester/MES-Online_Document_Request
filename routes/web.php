@@ -63,16 +63,16 @@ Route::get('/contact', function(){
 
 Route::controller(EmployeeRequestController::class)->group(function(){
 
-    Route::get('forms/employee',[EmployeeRequestController::class, 'index'])->name('employee');
+    Route::get('forms/employee',[EmployeeRequestController::class, 'index'])->name('employee')->middleware('verified');
 });
 
-Route::get('request-success/', [EmployeeRequestSuccessController::class, 'index'])->name('request-sucess');
+Route::get('request-success/', [EmployeeRequestSuccessController::class, 'index'])->name('request-sucess')->middleware('verified');
 
 
 
 Route::controller(StudentRequestController::class)->group(function(){
 
-    Route::get('forms/student',[StudentRequestController::class, 'index'])->name('student');
+    Route::get('forms/student',[StudentRequestController::class, 'index'])->name('student')->middleware('verified');
 });
 
 Route::controller(TrackRequestController::class)->group(function(){
