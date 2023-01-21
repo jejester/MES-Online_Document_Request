@@ -163,13 +163,22 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                         @error('agree')
-                            <div class="text-red-500 text-md">
+                            <div class="text-red-500 text-sm">
                                 {{ $message }}
                             </div>
-                            @enderror
+                        @enderror
+                        
+                        @if (config('services.recaptcha.key'))
+                        <div class="sm:col-span-2">
+                            <div class="g-recaptcha"
+                                data-sitekey="{{ config('services.recaptcha.key') }}">
+                            </div>
+                            <span class="text-sm text-red-500">@error('g-recaptcha-response'){{ $message }}@enderror</span>
+                        </div>    
+                        @endif
+
 
                         <div>
                             <button type="submit" class="inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-white transition-all duration-200 bg-green-900 border border-transparent rounded-md focus:outline-none hover:bg-green-500 focus:bg-green-200 focus:text-green-900">

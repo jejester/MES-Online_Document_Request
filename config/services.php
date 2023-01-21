@@ -37,4 +37,9 @@ return [
         'redirect' => 'http://127.0.0.1:8000/auth/google/call-back',
     ],
 
+    'recaptcha' => [
+        'key' => env('GOOGLE_RECAPTCHA_KEY'),
+        'secret' => env('GOOGLE_RECAPTCHA_SECRET')
+    ]
+
 ];

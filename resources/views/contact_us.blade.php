@@ -69,7 +69,7 @@
                                 <div class="mt-2.5 relative">
                                     <input type="text" name="name" id="name" placeholder="Enter your full name" class="block w-full px-4 py-4 text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-green-600 caret-green-600" />
                                 </div>
-                                <span class=" text-sm text-red-600">@error('name'){{ $message }}@enderror</span>
+                                <span class=" text-md text-red-600">@error('name'){{ $message }}@enderror</span>
                             </div>
         
 
@@ -78,7 +78,7 @@
                                 <div class="mt-2.5 relative">
                                     <input type="email" name="email" id="email" placeholder="Enter your full name" class="block w-full px-4 py-4 text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-green-600 caret-green-600" />
                                 </div>
-                                <span class=" text-sm text-red-600">@error('email'){{ $message }}@enderror</span>
+                                <span class=" text-md text-red-600">@error('email'){{ $message }}@enderror</span>
                             </div>
                 
 
@@ -87,8 +87,17 @@
                                 <div class="mt-2.5 relative">
                                     <textarea name="content" id="content" placeholder="" class="block w-full px-4 py-4 text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md resize-y focus:outline-none focus:border-green-600 caret-green-600" rows="4"></textarea>
                                 </div>
-                                <span class=" text-sm text-red-600">@error('content'){{ $message }}@enderror</span>
+                                <span class=" text-md text-red-600">@error('content'){{ $message }}@enderror</span>
                             </div>
+
+                            @if (config('services.recaptcha.key'))
+                            <div class="sm:col-span-2 mx-auto">
+                                <div class="g-recaptcha"
+                                    data-sitekey="{{ config('services.recaptcha.key') }}">
+                                </div>
+                                <span class="text-md text-red-600">@error('g-recaptcha-response'){{ $message }}@enderror</span>
+                            </div>    
+                            @endif
 
                         
 
@@ -102,8 +111,10 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> 
 </section>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 
 
 
