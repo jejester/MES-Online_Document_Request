@@ -4,7 +4,7 @@
 @section('content')
 <div class="container m-auto justify-center text-center mt-28">
     <h1 class="text-3xl font-bold-text mx-auto text-center tracking-tight text-green-500 md:text-6xl">Online Document <i class=" text-green-600 ml-1">Request</i></h1>
-    <p class="text-base m-auto font-paragraph-text text-gray-800 md:text-lg">Requesting document made easier, accessible and hassle-free.</p>
+    <p class="text-base m-auto font-paragraph-text text-gray-800 md:text-lg">Requesting document made easier and accessible</p>
 </div>
 
 <div class="container m-auto flex justify-center space-x-5 mt-5 p-3">
@@ -26,7 +26,7 @@
     @endauth
 
     @guest
-    <a href="{{ route('login') }}"><button class="font-nav-text transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300 rounded-full text-white bg-green-900 hover:shadow-2xl hover:bg-green-200 hover:text-green-900 focus:outline-none text-lg px-5 py-3 
+    <a href="{{ route('login') }}"><button class="font-nav-text transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300 rounded-full text-white bg-green-900 hover:shadow-2xl hover:bg-green-200 hover:text-green-900 focus:outline-none text-lg px-5 py-3.5 
     text-center inline-flex items-center" type="button">Login to Request</button></a>
     @endguest
 

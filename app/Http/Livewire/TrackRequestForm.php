@@ -2,11 +2,12 @@
 
 namespace App\Http\Livewire;
 
+use DateInterval;
 use Livewire\Component;
 use App\Models\EmployeeRequest;
 use Illuminate\Support\Facades\DB;
-use function PHPUnit\Framework\isTrue;
 
+use function PHPUnit\Framework\isTrue;
 use Symfony\Component\Console\Input\Input;
 
 class TrackRequestForm extends Component
@@ -123,13 +124,15 @@ class TrackRequestForm extends Component
 
             $db_name = DB::table('processing_student_requests')->where('pin', $u_pin)->value('first_name');
             $db_tr = DB::table('processing_student_requests')->where('pin', $u_pin)->value('tracking_number');
+            $db_date = DB::table('processing_student_requests')->where('pin', $u_pin)->value('created_at');
 
             $tr = $db_tr;
+            $date = date('F j, Y', strtotime('+5 days', strtotime($db_date)));
             $status = 'Approved and being process';
             $p = $u_pin;
             $n = $db_name;
 
-            return redirect()->route('request.status',['number'=>$tr, 'pin'=>$p, 'name'=>$n, 'status'=>$status]);
+            return redirect()->route('request.status',['number'=>$tr, 'pin'=>$p, 'name'=>$n, 'status'=>$status, 'date'=>$date]);
 
          }
 
@@ -199,13 +202,15 @@ class TrackRequestForm extends Component
 
             $db_name = DB::table('processing_employee_requests')->where('pin', $u_pin)->value('first_name');
             $db_tr = DB::table('processing_employee_requests')->where('pin', $u_pin)->value('tracking_number');
+            $db_date = DB::table('processing_employee_requests')->where('pin', $u_pin)->value('created_at');
 
             $tr = $db_tr;
+            $date = date('F j, Y', strtotime('+5 days', strtotime($db_date)));
             $status = 'Approved and being process';
             $p = $u_pin;
             $n = $db_name;
 
-            return redirect()->route('request.status',['number'=>$tr, 'pin'=>$p, 'name'=>$n, 'status'=>$status]);
+            return redirect()->route('request.status',['number'=>$tr, 'pin'=>$p, 'name'=>$n, 'status'=>$status, 'date'=>$date]);
 
          }
 
@@ -247,7 +252,7 @@ class TrackRequestForm extends Component
             
             $tr = $db_tr;
             $date = date('F j, Y',strtotime($db_date));
-            $status = 'Received and Picked up';
+            $status = 'Unclaimed';
             $p = $u_pin;
             $n = $db_name;
 

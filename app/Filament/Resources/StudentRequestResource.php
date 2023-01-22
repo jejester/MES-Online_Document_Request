@@ -10,18 +10,22 @@ use Filament\Resources\Table;
 use App\Models\StudentRequest;
 use Illuminate\Support\Carbon;
 use Filament\Resources\Resource;
+use App\Mail\RequestDeclinedMail;
 use Illuminate\Support\Facades\DB;
 use Filament\Forms\Components\Card;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Filters\Layout;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Filament\Forms\Components\Select;
 use App\Models\ProcessingStudentRequest;
 use Filament\Forms\Components\TextInput;
+use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Forms\Components\DateTimePicker;
 use App\Filament\Resources\StudentRequestResource\Pages;
 use App\Filament\Resources\StudentRequestResource\Widgets\StudentRequestOverview;
-use Filament\Tables\Filters\SelectFilter;
 
 class StudentRequestResource extends Resource
 {
@@ -39,7 +43,7 @@ class StudentRequestResource extends Resource
         return $form
         ->schema([
                 Card::make()->schema([
-                    DateTimePicker::make('created_at')->label('Date Requested')->displayFormat('F j, Y / H:i A')->columnSpan(2)->required()->disabled(),
+                    DateTimePicker::make('created_at')->label('Date Requested')->displayFormat('F j, Y / H:i A')->columnSpan(2)->disabled(),
                     TextInput::make('first_name')->required(),
                     TextInput::make('middle_name')->required(),
                     TextInput::make('last_name')->required(),
@@ -47,13 +51,19 @@ class StudentRequestResource extends Resource
                     TextInput::make('email')->required(),
                     TextInput::make('contact')->required(),
                     TextInput::make('birthday')->required(),
-                    TextInput::make('gender')->required(),
+                    Select::make('gender')
+                    ->options([
+                        'Male' => 'Male',
+                        'Female' => 'Female',
+                    ])
+                    ->required(),
                 ])->columns(2),
                 Card::make()->schema([
-                    TextInput::make('tracking_number')->required()->disabled(),
-                    TextInput::make('pin')->required()->disabled(),
+                    TextInput::make('tracking_number')->disabled(),
+                    TextInput::make('pin')->disabled(),
                 ])->columns(2)
         ]);
+        
     }
 
     public static function table(Table $table): Table
@@ -98,6 +108,15 @@ class StudentRequestResource extends Resource
                 })
                 ->requiresConfirmation()
                 ->color('success'),
+
+                Tables\Actions\Action::make('Decline')
+                ->action(function (StudentRequest $record): void {
+                    $name = $record->first_name;
+                    Mail::to($record->email)->send(new RequestDeclinedMail($name));
+                    DB::table('student_requests')->delete($record->id);
+                })
+                ->requiresConfirmation()
+                ->color('danger'),
             ])->filters([
                 SelectFilter::make('grade')
                 ->options([
@@ -124,6 +143,10 @@ class StudentRequestResource extends Resource
             ]);
             
     }
+
+
+    
+    
 
     
     public static function getRelations(): array
@@ -158,4 +181,6 @@ class StudentRequestResource extends Resource
     {
         return false;
     }
+
+    
 }

@@ -99,6 +99,13 @@
                     </div>
                 </div> 
 
+                <p class="text-xl font-paragraph-text text-black"> {{ __('Estimated date of release:') }}</p>
+                <div class="w-full pr-4">
+                    <div class="mb-4 lg:mb-0">
+                        <input type="text" class="text-center text-green-900 font-nav-text w-full py-3 px-5 mb-1
+                        bg-green-100 rounded-lg border-white text-lg" value="{{ request()->date }}" disabled>
+                </div>
+
                 @elseif (request()->status == "Ready for Pickup")
                 <p class="text-xl font-paragraph-text text-black"> {{ __('Your request is:') }}</p>
                 <div class="w-full pr-4">

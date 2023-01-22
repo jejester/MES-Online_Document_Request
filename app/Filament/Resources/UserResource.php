@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use Carbon\Carbon;
 use Filament\Forms;
 use App\Models\User;
 use Filament\Tables;
@@ -90,6 +91,14 @@ class UserResource extends Resource
             ->bulkActions([
 
             ]);
+    }
+
+    protected function mutateFormDataBeforeCreate(array $data): array
+    {
+        
+        return array_merge($data, [
+            'email_verified_at' => Carbon::now()
+        ]);
     }
 
     

@@ -9,10 +9,12 @@ use Filament\Resources\Form;
 use Filament\Resources\Table;
 use App\Models\EmployeeRequest;
 use Filament\Resources\Resource;
+use App\Mail\RequestDeclinedMail;
 use Illuminate\Support\Facades\DB;
 use Filament\Forms\Components\Card;
 use Filament\Tables\Filters\Filter;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Filament\Forms\Components\TextInput;
 use App\Models\ProcessingEmployeeRequest;
 use Illuminate\Database\Eloquent\Builder;
@@ -87,6 +89,15 @@ class EmployeeRequestResource extends Resource
                 })
                 ->requiresConfirmation()
                 ->color('success'),
+
+                Tables\Actions\Action::make('Decline')
+                ->action(function (EmployeeRequest $record): void {
+                    $name = $record->first_name;
+                    Mail::to($record->email)->send(new RequestDeclinedMail($name));
+                    DB::table('employee_requests')->delete($record->id);
+                })
+                ->requiresConfirmation()
+                ->color('danger'),
             ])->filters([
                 Filter::make('fds')
                 ->query(fn (Builder $query): Builder => $query->where('document', 'FDS'))->label('FDS'),

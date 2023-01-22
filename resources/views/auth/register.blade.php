@@ -171,7 +171,7 @@
                         @enderror
                         
                         @if (config('services.recaptcha.key'))
-                        <div class="sm:col-span-2">
+                        <div class="sm:col-span-2 mx-auto">
                             <div class="g-recaptcha"
                                 data-sitekey="{{ config('services.recaptcha.key') }}">
                             </div>
