@@ -2,10 +2,12 @@
 
 namespace App\Filament\Resources;
 
+use Closure;
+
+use App\Models\User;
+
 use Filament\Tables;
-
 use Filament\Resources\Form;
-
 use Filament\Resources\Table;
 use App\Models\StudentRequest;
 use Illuminate\Support\Carbon;
@@ -48,6 +50,8 @@ class StudentRequestResource extends Resource
                     TextInput::make('middle_name')->required(),
                     TextInput::make('last_name')->required(),
                     TextInput::make('lrn')->required()->label('LRN'),
+                    TextInput::make('grade')->required()->label('Grade'),
+                    TextInput::make('section')->required()->label('Section'),
                     TextInput::make('email')->required(),
                     TextInput::make('contact')->required(),
                     TextInput::make('birthday')->required(),
@@ -74,8 +78,8 @@ class StudentRequestResource extends Resource
                 Tables\Columns\TextColumn::make('first_name')->searchable(),
                 Tables\Columns\TextColumn::make('last_name')->searchable(),
                 Tables\Columns\TextColumn::make('lrn')->label('LRN')->searchable(),
-                Tables\Columns\TextColumn::make('grade'),
-                Tables\Columns\TextColumn::make('section')->searchable(),
+                Tables\Columns\TextColumn::make('grade')->label('Grade'),
+                Tables\Columns\TextColumn::make('section')->label('Section')->searchable(),
                 Tables\Columns\TextColumn::make('document')->label('Document Requesting'),
                 Tables\Columns\TextColumn::make('contact'),
                 
@@ -108,7 +112,6 @@ class StudentRequestResource extends Resource
                 })
                 ->requiresConfirmation()
                 ->color('success'),
-
                 Tables\Actions\Action::make('Decline')
                 ->action(function (StudentRequest $record): void {
                     $name = $record->first_name;
@@ -116,7 +119,21 @@ class StudentRequestResource extends Resource
                     DB::table('student_requests')->delete($record->id);
                 })
                 ->requiresConfirmation()
-                ->color('danger'),
+                ->color('danger')
+                ->form([
+                    TextInput::make('Password')
+                    ->password()
+                    ->required()
+                    ->rules([
+                        function () {
+                            return function (string $attribute, $value, Closure $fail) {
+                                if ($value !== 'password') {
+                                    $fail("Password invalid.");
+                                }
+                            };
+                        },
+                    ]),
+                ])
             ])->filters([
                 SelectFilter::make('grade')
                 ->options([

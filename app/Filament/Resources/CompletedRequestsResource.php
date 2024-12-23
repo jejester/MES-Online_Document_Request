@@ -38,6 +38,8 @@ class CompletedRequestsResource extends Resource
                     TextInput::make('middle_name')->required(),
                     TextInput::make('last_name')->required(),
                     TextInput::make('lrn')->required()->label('LRN'),
+                    TextInput::make('grade')->required()->label('Grade'),
+                    TextInput::make('section')->required()->label('Section'),
                     TextInput::make('email')->required(),
                     TextInput::make('contact')->required(),
                     TextInput::make('birthday')->required(),
@@ -54,16 +56,16 @@ class CompletedRequestsResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('created_at')->label('Date Claimed')->sortable()->date('F j, Y / h:i A'),
+                Tables\Columns\TextColumn::make('created_at')->label('Date Claimed')->sortable()->date('F j, Y - h:i A')->color('success'),
                 Tables\Columns\TextColumn::make('first_name')->searchable(),
                 Tables\Columns\TextColumn::make('last_name')->searchable(),
                 Tables\Columns\TextColumn::make('lrn')->label('LRN'),
                 Tables\Columns\TextColumn::make('grade')->label('Grade'),
-                Tables\Columns\TextColumn::make('section')->label('Grade'),
+                Tables\Columns\TextColumn::make('section')->label('Section'),
                 Tables\Columns\TextColumn::make('email'),
                 Tables\Columns\TextColumn::make('document')->label('Document Requesting'),
                 Tables\Columns\TextColumn::make('contact'),
-                Tables\Columns\TextColumn::make('released_by'),
+                Tables\Columns\TextColumn::make('released_by')->color('primary'),
             ])
             ->filters([
                 SelectFilter::make('grade')

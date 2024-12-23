@@ -2,15 +2,19 @@
 
 namespace App\Filament\Resources;
 
+use Carbon\Carbon;
 use Filament\Forms;
 use Filament\Tables;
 use Filament\Resources\Form;
 use Filament\Resources\Table;
 use App\Models\EmployeeBacklogs;
 use Filament\Resources\Resource;
+use Illuminate\Support\Facades\DB;
 use Filament\Forms\Components\Card;
 use Filament\Tables\Filters\Filter;
+use Illuminate\Support\Facades\Auth;
 use Filament\Forms\Components\TextInput;
+use App\Models\EmployeeCompletedRequests;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Forms\Components\DateTimePicker;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -68,7 +72,32 @@ class EmployeeBacklogsResource extends Resource
                 ->query(fn (Builder $query): Builder => $query->where('document', 'Certificate of Employment'))->label('Certificate of Employment'),
             ])
             ->actions([
-         
+                Tables\Actions\Action::make('Claimed')
+                ->action(function (EmployeeBacklogs $record, array $data): void {
+                    $values = array(
+                        "user_id"=>$record->user_id,
+                        "first_name"=>$record->first_name,
+                        "middle_name"=>$record->middle_name,
+                        "last_name"=>$record->last_name,
+                        "gender"=>$record->gender,
+                        "email"=>$record->email,
+                        "contact"=>$record->contact,
+                        "address"=>$record->address,
+                        "employee_id"=>$record->employee_id,
+                        "document"=>$record->document,
+                        "birthday"=>$record->birthday,
+                        "created_at"=>Carbon::now(),
+                        "tracking_number"=>$record->tracking_number,
+                        "pin"=>$record->pin,
+                        "status"=>2,
+                        "released_by"=>Auth::user()->name,
+                    );
+    
+                    EmployeeCompletedRequests::insert($values);
+                    DB::table('employee_backlogs')->delete($record->id);
+                })
+                ->requiresConfirmation()
+                ->color('success'),
             ])
             ->bulkActions([
                 

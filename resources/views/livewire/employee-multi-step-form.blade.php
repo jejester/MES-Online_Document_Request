@@ -1,6 +1,6 @@
 <div class="">
     @if(session()->has('message'))
-    <div class="text-md font-nav-text text-white mx-auto bg-red-600 rounded-2xl py-3 px-3 md:max-w-2xl text-center mt-5 mb-5">
+    <div class="text-md font-nav-text text-red-700 bg-white mx-auto border-2 border-red-600 rounded-2xl py-3 px-3 md:max-w-2xl text-center mt-5 mb-5">
     {{ session()->get('message') }}
     </div>
     @endif

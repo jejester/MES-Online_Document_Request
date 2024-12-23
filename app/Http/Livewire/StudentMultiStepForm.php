@@ -150,18 +150,43 @@ class StudentMultiStepForm extends Component
             return redirect()->back()->with('message', 'Request Invalid, You still have a pending request.');
         }
 
-        elseif(DB::table('completed_requests')->where('user_id', $u_id)->value('lrn') == $this->lrn && DB::table('completed_requests')->where('user_id', $u_id)->value('document') == "Form-137"){
-            $db_date = DB::table('completed_requests')->where('user_id', $u_id)->value('created_at');
-            $date = date('F j, Y',strtotime($db_date));
-            return redirect()->back()->with('message', "You already requested and received a Form-137 on $date");
+        elseif(DB::table('student_requests')->where('lrn', $this->lrn)->value('lrn') == $this->lrn 
+        || DB::table('processing_student_requests')->where('lrn', $this->lrn)->value('lrn') == $this->lrn
+        || DB::table('student_docs_readyfor_pickups')->where('lrn', $this->lrn)->value('lrn') == $this->lrn)
+        {
+            return redirect()->back()->with('message', 'Request Invalid, You still have a pending request.');
         }
 
-        elseif(DB::table('completed_requests')->where('user_id', $u_id)->value('lrn') == $this->lrn && DB::table('completed_requests')->where('user_id', $u_id)->value('document') == "Certificate of Good Moral"){
-            $db_date = DB::table('completed_requests')->where('user_id', $u_id)->value('created_at');
+        elseif(DB::table('completed_requests')->where('lrn', $this->lrn)->value('lrn') == $this->lrn && DB::table('completed_requests')->where('lrn',  $this->lrn)->value('document') == $this->document){
+            $db_date = DB::table('completed_requests')->where('lrn', $this->lrn)->value('created_at');
             $date = date('F j, Y',strtotime($db_date));
-            return redirect()->back()->with('message', "You already requested and received a Certificate of Good Moral on $date");
+            return redirect()->back()->with('message', "You already requested and received a $this->document on $date");
         }
-        
+
+
+        elseif(DB::table('backlogs')->where('lrn', $this->lrn)->value('lrn') == $this->lrn && DB::table('backlogs')->where('lrn', $this->lrn)->value('document') == "Certificate of Graduation"){
+            $db_date = DB::table('backlogs')->where('lrn', $this->lrn)->value('created_at');
+            $date = date('F j, Y',strtotime($db_date));
+            return redirect()->back()->with('message', "You still have an unclaimed Certificate of Graduation since $date");
+        }
+
+        elseif(DB::table('backlogs')->where('lrn', $this->lrn)->value('lrn') == $this->lrn && DB::table('backlogs')->where('lrn', $this->lrn)->value('document') == "Certificate of Enrollment"){
+            $db_date = DB::table('backlogs')->where('lrn', $this->lrn)->value('created_at');
+            $date = date('F j, Y',strtotime($db_date));
+            return redirect()->back()->with('message', "You still have an unclaimed Certificate of Enrollment since $date");
+        }
+
+        elseif(DB::table('backlogs')->where('lrn', $this->lrn)->value('lrn') == $this->lrn && DB::table('backlogs')->where('lrn', $this->lrn)->value('document') == "Certificate of Good Moral"){
+            $db_date = DB::table('backlogs')->where('lrn', $this->lrn)->value('created_at');
+            $date = date('F j, Y',strtotime($db_date));
+            return redirect()->back()->with('message', "You still have an unclaimed Certificate of Good Moral since $date");
+        }
+
+        elseif(DB::table('backlogs')->where('lrn', $this->lrn)->value('lrn') == $this->lrn && DB::table('backlogs')->where('lrn', $this->lrn)->value('document') == "Form-137"){
+            $db_date = DB::table('backlogs')->where('lrn', $this->lrn)->value('created_at');
+            $date = date('F j, Y',strtotime($db_date));
+            return redirect()->back()->with('message', "You still have an unclaimed Form-137 since $date");
+        }
 
         else
         {   
@@ -170,7 +195,7 @@ class StudentMultiStepForm extends Component
             $data= $tracking_number;
             $name= $this->first_name;
             $p = $pin;
-            Mail::to($email)->send(new StudentRequestSuccessMail($data, $name, $p));
+            // Mail::to($email)->send(new StudentRequestSuccessMail($data, $name, $p));
             return redirect()->route('request-sucess',['name'=> $name,'number'=>$data, 'pin'=>$p]);
         }
 

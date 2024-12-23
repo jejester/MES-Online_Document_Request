@@ -151,6 +151,18 @@ class EmployeeMultiStepForm extends Component
             return redirect()->back()->with('message', 'Request Invalid, You still have a pending request.');
         }
 
+        elseif(DB::table('employee_backlogs')->where('employee_id', $this->employee_id)->value('employee_id') == $this->employee_id && DB::table('employee_backlogs')->where('employee_id', $this->employee_id)->value('document') == "FDS"){
+            $db_date = DB::table('employee_backlogs')->where('employee_id', $this->employee_id)->value('created_at');
+            $date = date('F j, Y',strtotime($db_date));
+            return redirect()->back()->with('message', "You still have an unclaimed FDS since $date");
+        }
+
+        elseif(DB::table('employee_backlogs')->where('employee_id', $this->employee_id)->value('employee_id') == $this->employee_id && DB::table('employee_backlogs')->where('employee_id', $this->employee_id)->value('document') == "Certificate of Employment"){
+            $db_date = DB::table('employee_backlogs')->where('employee_id', $this->employee_id)->value('created_at');
+            $date = date('F j, Y',strtotime($db_date));
+            return redirect()->back()->with('message', "You still have an unclaimed Certificate of Employment since $date");
+        }
+
         else
         {   
             EmployeeRequest::insert($values);

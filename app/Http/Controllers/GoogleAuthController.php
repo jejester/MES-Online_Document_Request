@@ -19,10 +19,10 @@ class GoogleAuthController extends Controller
         try {
             $google_user = Socialite::driver('google')->user();
 
-            $user = User::where('email', $google_user->getEmail())->first();
+            // $user = User::where('email', $google_user->getEmail())->first();
 
 
-            if(!$user){
+            // if(!$user){
                 $new_user = User::create([
                     'name' => $google_user->getName(),
                     'email'=> $google_user->getEmail(),
@@ -32,12 +32,12 @@ class GoogleAuthController extends Controller
 
                 Auth::login($new_user);
                 return redirect()->route('home');
-            }
+            // }
 
-            else{
+            // else{
                 Auth::login($user);
                 return redirect()->route('home');
-            }
+            // }
         
         } catch (\Throwable $th){
             dd('Something went wrong! '. $th->getMessage());

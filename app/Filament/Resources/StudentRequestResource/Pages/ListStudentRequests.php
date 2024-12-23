@@ -2,10 +2,11 @@
 
 namespace App\Filament\Resources\StudentRequestResource\Pages;
 
+use Filament\Pages\Actions;
+use Illuminate\Database\Eloquent\Model;
+use Filament\Resources\Pages\ListRecords;
 use App\Filament\Resources\StudentRequestResource;
 use App\Filament\Resources\StudentRequestResource\Widgets\StudentRequestOverview;
-use Filament\Pages\Actions;
-use Filament\Resources\Pages\ListRecords;
 
 class ListStudentRequests extends ListRecords
 {
@@ -24,4 +25,5 @@ class ListStudentRequests extends ListRecords
             StudentRequestOverview::class
         ];
     }
+
 }

@@ -20,6 +20,7 @@ use Filament\Tables\Columns\ToggleColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Resources\Pages\CreateRecord;
 use Filament\Tables\Columns\BooleanColumn;
+use Filament\Tables\Filters\TernaryFilter;
 use Filament\Forms\Components\DateTimePicker;
 use App\Filament\Resources\UserResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -83,7 +84,9 @@ class UserResource extends Resource
                 Filter::make('is_admin')
                 ->query(fn (Builder $query): Builder => $query->where('is_admin', 1))->label('Admin'),
                 Filter::make('is_user')
-                ->query(fn (Builder $query): Builder => $query->where('is_admin', 0))->label('Users')
+                ->query(fn (Builder $query): Builder => $query->where('is_admin', 0))->label('Users'),
+                TernaryFilter::make('email_verified_at')
+                 ->nullable()->label('Email Verified')
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -100,6 +103,8 @@ class UserResource extends Resource
             'email_verified_at' => Carbon::now()
         ]);
     }
+
+    
 
     
     public static function getRelations(): array

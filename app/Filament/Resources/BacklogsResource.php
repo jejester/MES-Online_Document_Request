@@ -2,14 +2,18 @@
 
 namespace App\Filament\Resources;
 
+use Carbon\Carbon;
 use Filament\Tables;
-use App\Models\Backlogs;
 
+use App\Models\Backlogs;
 use Filament\Resources\Form;
 use Filament\Resources\Table;
 use Filament\Resources\Resource;
+use App\Models\CompletedRequests;
+use Illuminate\Support\Facades\DB;
 use Filament\Forms\Components\Card;
 use Filament\Tables\Filters\Filter;
+use Illuminate\Support\Facades\Auth;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
@@ -36,6 +40,8 @@ class BacklogsResource extends Resource
                     TextInput::make('middle_name')->required(),
                     TextInput::make('last_name')->required(),
                     TextInput::make('lrn')->required()->label('LRN'),
+                    TextInput::make('grade')->required()->label('Grade'),
+                    TextInput::make('section')->required()->label('Section'),
                     TextInput::make('email')->required(),
                     TextInput::make('contact')->required(),
                     TextInput::make('birthday')->required(),
@@ -57,7 +63,7 @@ class BacklogsResource extends Resource
                 Tables\Columns\TextColumn::make('last_name')->searchable(),
                 Tables\Columns\TextColumn::make('lrn')->label('LRN'),
                 Tables\Columns\TextColumn::make('grade')->label('Grade'),
-                Tables\Columns\TextColumn::make('section')->label('Grade'),
+                Tables\Columns\TextColumn::make('section')->label('Section'),
                 Tables\Columns\TextColumn::make('email'),
                 Tables\Columns\TextColumn::make('document')->label('Document Requesting'),
                 Tables\Columns\TextColumn::make('contact'),
@@ -84,7 +90,34 @@ class BacklogsResource extends Resource
                 ->query(fn (Builder $query): Builder => $query->where('document', 'Certificate of Good Moral'))->label('Certificate of Good Moral'),
             ])
             ->actions([
-                
+                Tables\Actions\Action::make('Claimed')
+                ->action(function (Backlogs $record, array $data): void {
+                    $values = array(
+                        "user_id"=>$record->user_id,
+                        "first_name"=>$record->first_name,
+                        "middle_name"=>$record->middle_name,
+                        "last_name"=>$record->last_name,
+                        "gender"=>$record->gender,
+                        "email"=>$record->email,
+                        "grade"=>$record->grade,
+                        "section"=>$record->section,
+                        "contact"=>$record->contact,
+                        "address"=>$record->address,
+                        "lrn"=>$record->lrn,
+                        "document"=>$record->document,
+                        "birthday"=>$record->birthday,
+                        "created_at"=>Carbon::now(),
+                        "tracking_number"=>$record->tracking_number,
+                        "pin"=>$record->pin,
+                        "status"=>2,
+                        "released_by"=>Auth::user()->name,
+                    );
+    
+                    CompletedRequests::insert($values);
+                    DB::table('backlogs')->delete($record->id);
+                })
+                ->requiresConfirmation()
+                ->color('success'),
             ])
             ->bulkActions([
                 
